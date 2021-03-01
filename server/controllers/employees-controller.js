@@ -37,19 +37,7 @@ const getEmployees = async (req, res) => {
   try {
     const employeesList = await EmployeesModel.find();
 
-    const employeesInfoList = employeesList.map((employee) => ({
-      id: employee._id,
-      employeeName: employee.employeeName,
-      employeeSurname: employee.employeeSurname,
-      employeePosition: employee.employeePosition,
-      skills: employee.skills,
-      expiriense: employee.expiriense,
-      dateStartWorking: employee.dateStartWorking,
-      info: employee.info,
-      avatar: employee.avatar,
-    }));
-
-    return res.json({ employeesInfoList });
+    return res.json({ employeesList });
   } catch (e) {
     console.log(e);
     res.json({ message: "something wrong" });

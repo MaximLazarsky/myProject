@@ -1,4 +1,5 @@
 const Router = require("express");
+const { passport, userAdminMiddleWare } = require("../middleware");
 const {
   addNewEmployee,
   getEmployees,
@@ -8,9 +9,9 @@ const {
 
 const router = new Router();
 
-router.post("/employees", addNewEmployee);
+router.post("/employees", userAdminMiddleWare(), addNewEmployee);
 router.get("/employees", getEmployees);
-router.delete("/employees/:id", deleteEmployee);
-router.put("/employees/:id", updateEmployee);
+router.delete("/employees/:id", userAdminMiddleWare(), deleteEmployee);
+router.put("/employees/:id", userAdminMiddleWare(), updateEmployee);
 
 module.exports = router;
