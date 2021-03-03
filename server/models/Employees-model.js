@@ -1,4 +1,4 @@
-const { Schema, model, ObjectId } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const Employees = new Schema({
   employeeName: { type: String, required: true },
@@ -9,8 +9,8 @@ const Employees = new Schema({
   dateStartWorking: { type: String, required: true },
   info: { type: String },
   avatar: { type: String },
-  clients: [{ type: ObjectId, ref: "Clients" }],
-  projects: [{ type: ObjectId, ref: "Projects" }],
+  clients: [{ type: Schema.Types.ObjectId, ref: "Clients" }],
+  projects: [{ type: Schema.Types.ObjectId, ref: "Projects" }],
 });
 
 module.exports = model("Employees", Employees);

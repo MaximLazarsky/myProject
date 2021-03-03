@@ -1,4 +1,4 @@
-const EmployeesModel = require("../models/Employees-model");
+const Employees = require("../models/Employees-model");
 
 const addNewEmployee = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const addNewEmployee = async (req, res) => {
       info,
       avatar,
     } = req.body;
-    const employee = new EmployeesModel({
+    const employee = new Employees({
       employeeName,
       employeeSurname,
       employeePosition,
@@ -35,7 +35,7 @@ const addNewEmployee = async (req, res) => {
 
 const getEmployees = async (req, res) => {
   try {
-    const employeesList = await EmployeesModel.find();
+    const employeesList = await Employees.find();
 
     return res.json({ employeesList });
   } catch (e) {
@@ -46,7 +46,7 @@ const getEmployees = async (req, res) => {
 
 const deleteEmployee = async (req, res) => {
   try {
-    await EmployeesModel.findByIdAndDelete(req.params.id);
+    await Employees.findByIdAndDelete(req.params.id);
 
     return res.json({ message: "Employee was deleted" });
   } catch (e) {
@@ -71,7 +71,7 @@ const updateEmployee = async (req, res) => {
     } = req.body;
     const { id } = req.params;
 
-    const employee = await EmployeesModel.findByIdAndUpdate(
+    const employee = await Employees.findByIdAndUpdate(
       { _id: id },
       {
         employeeName,

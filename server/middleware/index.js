@@ -26,10 +26,10 @@ passport.use(
   })
 );
 
-const userAdminMiddleWare = () =>
+const useAdminMiddleWare = () =>
   passport.authenticate("jwt", { session: false });
 
 module.exports = {
   passport,
-  userAdminMiddleWare,
+  useAdminMiddleWare,
 };

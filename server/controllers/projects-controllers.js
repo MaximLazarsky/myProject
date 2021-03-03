@@ -1,0 +1,145 @@
+const Projects = require("../models/Projects-model");
+const Clients = require("../models/Clients-model");
+
+const addProject = async (req, res) => {
+  try {
+    const {
+      client,
+      projectName,
+      task,
+      skills,
+      discription,
+      dateStartWorking,
+      dateStopWorking,
+      imgs,
+      linkProdaction,
+      isActive,
+      isSuccess,
+      earned,
+      platform,
+    } = req.body;
+    const project = await new Projects({
+      client,
+      projectName,
+      task,
+      skills,
+      discription,
+      dateStartWorking,
+      dateStopWorking,
+      imgs,
+      linkProdaction,
+      isActive: isActive || null,
+      isSuccess: isSuccess || null,
+      earned: earned || null,
+      platform,
+    });
+
+    await project.save();
+
+    const targetClient = await Clients.findById({ _id: client });
+
+    await targetClient.projects.push(project._id);
+    await targetClient.save();
+
+    return res.json({ project, message: "project was added" });
+  } catch (e) {
+    console.log(e);
+    res.json({ e: e, message: "something wrong" });
+  }
+};
+
+const updateProject = async (req, res) => {
+  try {
+    const {
+      projectName,
+      task,
+      skills,
+      discription,
+      dateStartWorking,
+      dateStopWorking,
+      imgs,
+      linkProdaction,
+      isActive,
+      isSuccess,
+      earned,
+      platform,
+    } = req.body;
+    const { id } = req.params;
+
+    const project = await Projects.findByIdAndUpdate(
+      { _id: id },
+      {
+        projectName,
+        task,
+        skills,
+        discription,
+        dateStartWorking,
+        dateStopWorking,
+        imgs,
+        linkProdaction,
+        isActive,
+        isSuccess,
+        earned,
+        platform,
+      },
+      { new: true }
+    );
+    return res.json({ project, message: "Project was updated" });
+  } catch (e) {
+    console.log(e);
+    res.json({ message: "something wrong" });
+  }
+};
+
+const getProjectsAdmin = async (req, res) => {
+  try {
+    const projectsList = await Projects.find();
+    return res.json({ projectsList });
+  } catch (e) {
+    console.log(e);
+    res.json({ message: "something wrong" });
+  }
+};
+
+const getProjects = async (req, res) => {
+  try {
+    const projectsList = await Projects.find({
+      isActive: false,
+      isSuccess: true,
+    });
+    const projects = projectsList.map((project) => ({
+      projectName: project.projectName,
+      task: project.task,
+      skills: project.skills,
+      discription: project.discription,
+      dateStartWorking: project.dateStartWorking,
+      dateStopWorking: project.dateStopWorking,
+      imgs: project.imgs,
+      linkProdaction: project.linkProdaction,
+    }));
+
+    return res.json({ projects });
+  } catch (e) {
+    console.log(e);
+    res.json({ message: "something wrong" });
+  }
+};
+
+const deleteProject = async (req, res) => {
+  try {
+    await Projects.findByIdAndDelete(req.params.id);
+
+    return res.json({ message: "Project was deleted" });
+  } catch (e) {
+    console.log(e);
+    res.json({ message: "something wrong" });
+  }
+};
+
+module.exports = {
+  addProject,
+  updateProject,
+  getProjectsAdmin,
+  getProjects,
+  deleteProject,
+};
