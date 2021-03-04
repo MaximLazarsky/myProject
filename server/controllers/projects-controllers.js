@@ -28,8 +28,8 @@ const addProject = async (req, res) => {
       dateStopWorking,
       imgs,
       linkProdaction,
-      isActive: isActive || null,
-      isSuccess: isSuccess || null,
+      isActive: isActive,
+      isSuccess: isSuccess,
       earned: earned || null,
       platform,
     });
@@ -127,8 +127,13 @@ const getProjects = async (req, res) => {
 
 const deleteProject = async (req, res) => {
   try {
-    await Projects.findByIdAndDelete(req.params.id);
-
+    const project = await Projects.findByIdAndDelete(req.params.id);
+    const targetClient = await Clients.findById({ _id: project.client });
+    await targetClient.projects.splice(
+      targetClient.projects.indexOf(req.params.id),
+      1
+    );
+    await targetClient.save();
     return res.json({ message: "Project was deleted" });
   } catch (e) {
     console.log(e);
