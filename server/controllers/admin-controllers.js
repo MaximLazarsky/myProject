@@ -27,12 +27,12 @@ const loginAdmin = async (req, res) => {
     const admin = await Admin.findOne({ adminEmail });
 
     if (!admin) {
-      return res.status(400).json({ message: "Wrong email" });
+      return res.status(401).json({ message: "Wrong email" });
     }
 
     const isPassValid = bcrypt.compareSync(password, admin.password);
     if (!isPassValid) {
-      return res.status(400).json({ message: "Uncorrect password" });
+      return res.status(401).json({ message: "Uncorrect password" });
     }
 
     const token = jwt.sign(
