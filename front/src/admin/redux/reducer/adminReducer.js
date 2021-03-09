@@ -16,7 +16,6 @@ export default function adminReducer(state = defaultState, action) {
         isLogin: !state.isLogin,
       };
     case SET_ERROR:
-      console.log(action.payload);
       return {
         ...state,
         err: action.payload,

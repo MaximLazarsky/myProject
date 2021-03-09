@@ -9,7 +9,6 @@ const Employees = new Schema({
   dateStartWorking: { type: String, required: true },
   info: { type: String },
   avatar: { type: String },
-  clients: [{ type: Schema.Types.ObjectId, ref: "Clients" }],
   projects: [{ type: Schema.Types.ObjectId, ref: "Projects" }],
 });
 

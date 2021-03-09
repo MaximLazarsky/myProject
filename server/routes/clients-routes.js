@@ -1,7 +1,6 @@
 const Router = require("express");
 const { passport, useAdminMiddleWare } = require("../middleware");
 const {
-  addClientAdmin,
   getClients,
   deleteClient,
   updateClient,
@@ -11,12 +10,11 @@ const { body } = require("express-validator");
 
 const router = new Router();
 
-router.post("/clients", body("clientEmail").isEmail(), addClient);
 router.post(
-  "/clients/admin",
+  "/clients",
   body("clientEmail").isEmail(),
   useAdminMiddleWare(),
-  addClientAdmin
+  addClient
 );
 router.get("/clients", useAdminMiddleWare(), getClients);
 router.delete("/clients/:id", useAdminMiddleWare(), deleteClient);

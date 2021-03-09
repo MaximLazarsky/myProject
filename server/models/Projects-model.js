@@ -1,7 +1,7 @@
 const { Schema, model, ObjectId } = require("mongoose");
 
 const Projects = new Schema({
-  client: { type: ObjectId, required: true },
+  client: { type: Schema.Types.ObjectId, required: true, ref: "Clients" },
   projectName: { type: String, required: true },
   task: { type: String },
   skills: { type: String },
@@ -14,6 +14,7 @@ const Projects = new Schema({
   isSuccess: { type: Boolean },
   earned: { type: String },
   platform: { type: String },
+  employee: { type: Schema.Types.ObjectId, ref: "Employees" },
 });
 
 module.exports = model("Projects", Projects);

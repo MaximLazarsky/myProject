@@ -5,7 +5,7 @@ import { LOGIN_ADMIN, TOGLE_IS_LOGIN, SET_ERROR } from "../types";
 const loginAdminSaga = function* ({ payload }) {
   const { adminEmail, password } = payload;
   try {
-    const data = yield fetchLoginAdmin(adminEmail, password);
+    const { data } = yield fetchLoginAdmin(adminEmail, password);
     localStorage.setItem("Authorization", `Bearer ${data.token}`);
     yield put({ type: TOGLE_IS_LOGIN });
   } catch (e) {

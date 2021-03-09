@@ -14,7 +14,6 @@ passport.use(
     try {
       const { id } = jwtPayload;
       const admin = await AdminModel.findById(id).select("_id");
-
       if (admin) {
         return done(null, admin);
       } else {

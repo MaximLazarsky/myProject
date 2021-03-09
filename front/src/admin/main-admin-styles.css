@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 95%;
+}
+
+.dispaly-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(223, 223, 223);
+}

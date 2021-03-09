@@ -1,4 +1,4 @@
-import AdminPart from "./admin/AdminPart";
+import AdminPartApp from "./admin/AdminPartApp";
 import ClientPart from "./client/ClientPart";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={ClientPart} />
-        <Route path="/admin" component={AdminPart} />
+        <Route path="/admin" component={AdminPartApp} />
       </Switch>
     </Router>
   );
