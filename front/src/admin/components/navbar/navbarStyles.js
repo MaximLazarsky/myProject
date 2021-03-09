@@ -17,6 +17,16 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  menuNavLinksList: {
+    listStyle: "none",
+    padding: "0",
+    width: "100vw",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   navLinksList: {
     padding: "0",
     minWidth: "700px",

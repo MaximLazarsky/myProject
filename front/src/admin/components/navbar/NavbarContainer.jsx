@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 export default function NavbarContainer() {
     const dispatch = useDispatch() 
     const history = useHistory()
+    const [isOpenMenu, setIsOpenMenu] = useState(false)
 
     const onLogoutClick = () => {
         dispatch(togleIsLogin())
@@ -14,5 +15,7 @@ export default function NavbarContainer() {
         history.push('/admin')
     }
 
-    return <Navbar onLogoutClick={onLogoutClick}/>
+    const onBurgerClickOpenHandler = () => setIsOpenMenu(true)
+
+    return <Navbar onLogoutClick={onLogoutClick} isOpenMenu={isOpenMenu} onBurgerClickOpenHandler={onBurgerClickOpenHandler} />
 }
