@@ -1,6 +1,4 @@
-import { LOGIN_ADMIN, SET_ERROR, TOGLE_IS_LOGIN } from "../types";
-
-export const togleIsLogin = () => ({ type: TOGLE_IS_LOGIN });
+import { LOGIN_ADMIN, SET_ERROR } from "../types";
 
 export const loginAdmin = (payload) => ({ type: LOGIN_ADMIN, payload });
 
