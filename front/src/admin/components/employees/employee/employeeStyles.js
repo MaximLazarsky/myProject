@@ -22,20 +22,24 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   employeeItemDetails: {
-    padding: "10px 20px",
+    padding: "0px 20px",
+    borderBottom: "1px solid #3f51b5"
   },
   employeeAvatar: {
     height: "120px",
     width: "120px",
   },
   employeeItemDetailsContent: {
+    padding: "20px 0",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     fontFamily: "Roboto",
+    borderBottom: "1px solid #3f51b5"
   },
   emplaoyeeButtons: {
     textAlign: "end",
+    padding: "20px 0",
   },
 }));
 
