@@ -6,11 +6,17 @@ const jwt = require("jsonwebtoken");
 
 const addAdmin = async (req, res) => {
   try {
-    const { adminEmail, password } = req.body;
+    const { adminEmail, password, employees, clients, projects } = req.body;
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const admin = new Admin({ adminEmail, password: hashPassword });
+    const admin = new Admin({
+      adminEmail,
+      password: hashPassword,
+      employees: employees || [],
+      clients: clients || [],
+      projects: projects || [],
+    });
 
     await admin.save();
     return res.json({ admin });
@@ -48,4 +54,34 @@ const loginAdmin = async (req, res) => {
   }
 };
 
-module.exports = { addAdmin, loginAdmin };
+const getData = async (req, res) => {
+  try {
+    const admin = await Admin.findById(req.user._id)
+      .populate({
+        path: "employees",
+        model: "Employees",
+        populate: {
+          path: "projects",
+          model: "Projects",
+          populate: { path: "client", model: "Clients" },
+        },
+      })
+      .populate("clients")
+      .populate("projects");
+
+    const adminData = {
+      employees: admin.employees,
+      clients: admin.clients,
+      projects: admin.projects,
+    };
+
+    return res.json({
+      adminData,
+    });
+  } catch (e) {
+    console.log(e);
+    res.send({ message: "Server error" });
+  }
+};
+
+module.exports = { addAdmin, loginAdmin, getData };

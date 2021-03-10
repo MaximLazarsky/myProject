@@ -1,5 +1,7 @@
 const Projects = require("../models/Projects-model");
 const Clients = require("../models/Clients-model");
+const Admin = require("../models/Admin-model");
+const Employees = require("../models/Employees-model");
 
 const addProject = async (req, res) => {
   try {
@@ -17,6 +19,7 @@ const addProject = async (req, res) => {
       isSuccess,
       earned,
       platform,
+      employee,
     } = req.body;
     const project = await new Projects({
       client,
@@ -32,14 +35,22 @@ const addProject = async (req, res) => {
       isSuccess: isSuccess,
       earned: earned || null,
       platform,
+      employee,
     });
 
     await project.save();
 
     const targetClient = await Clients.findById({ _id: client });
-
     await targetClient.projects.push(project._id);
     await targetClient.save();
+
+    const targetEmployee = await Employees.findById({ _id: employee });
+    targetEmployee.projects.push(project._id);
+    await targetEmployee.save();
+
+    const admin = await Admin.findById(req.user._id);
+    admin.projects.push(project._id);
+    await admin.save();
 
     return res.json({ project, message: "project was added" });
   } catch (e) {

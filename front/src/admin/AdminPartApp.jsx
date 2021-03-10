@@ -1,11 +1,12 @@
-import LoginAdmin from './pages/LoginAdmin'
+import AdminPartContainer from './AdminPartContainer'
 import { Provider } from 'react-redux'
 import {store} from './redux/reducer'
 
-export default function AdminPart() {
+export default function AdminPartApp() {
+
     return (
         <Provider store={store}>
-            <LoginAdmin />
+            <AdminPartContainer/>
         </Provider>
     )
 }

@@ -1,34 +1,8 @@
-const { findOne } = require("../models/Clients-model");
 const Clients = require("../models/Clients-model");
 const { validationResult } = require("express-validator");
+const Admin = require("../models/Admin-model");
 
 const addClient = async (req, res) => {
-  try {
-    const err = validationResult(req);
-    if (!err.isEmpty()) return res.json({ message: "not valid email" });
-
-    const { clientName, clientSurname, clientEmail } = req.body;
-
-    const checkClient = await Clients.findOne({ clientEmail });
-    if (checkClient)
-      return res.json({ checkClient, message: "client already exist" });
-
-    const client = new Clients({
-      clientName,
-      clientSurname,
-      clientEmail,
-      projects: [],
-    });
-
-    await client.save();
-    return res.json({ client, message: "client was added" });
-  } catch (e) {
-    console.log(e);
-    res.json({ e: e, message: "something wrong" });
-  }
-};
-
-const addClientAdmin = async (req, res) => {
   try {
     const err = validationResult(req);
     if (!err.isEmpty()) return res.json({ message: "not valid email" });
@@ -47,6 +21,11 @@ const addClientAdmin = async (req, res) => {
     });
 
     await client.save();
+
+    const admin = await Admin.findById(req.user._id);
+    admin.clients.push(client._id);
+    await admin.save();
+
     return res.json({ client, message: "client was added" });
   } catch (e) {
     console.log(e);
@@ -103,7 +82,6 @@ const updateClient = async (req, res) => {
 
 module.exports = {
   addClient,
-  addClientAdmin,
   getClients,
   deleteClient,
   updateClient,

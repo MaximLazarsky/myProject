@@ -1,4 +1,5 @@
 const Employees = require("../models/Employees-model");
+const Admin = require("../models/Admin-model");
 
 const addNewEmployee = async (req, res) => {
   try {
@@ -11,6 +12,7 @@ const addNewEmployee = async (req, res) => {
       dateStartWorking,
       info,
       avatar,
+      projects,
     } = req.body;
     const employee = new Employees({
       employeeName,
@@ -21,11 +23,15 @@ const addNewEmployee = async (req, res) => {
       dateStartWorking,
       info: info || null,
       avatar: avatar || null,
-      clients: [],
-      projects: [],
+      projects: projects || [],
     });
 
     await employee.save();
+
+    const admin = await Admin.findById(req.user._id);
+    admin.employees.push(employee._id);
+    await admin.save();
+
     return res.json({ employee, message: "employee was added" });
   } catch (e) {
     console.log(e);
@@ -48,6 +54,10 @@ const deleteEmployee = async (req, res) => {
   try {
     await Employees.findByIdAndDelete(req.params.id);
 
+    const admin = await Admin.findById(req.user._id);
+    admin.employees.splice(admin.employees.indexOf(req.params.id), 1);
+    await admin.save();
+
     return res.json({ message: "Employee was deleted" });
   } catch (e) {
     console.log(e);
@@ -66,7 +76,6 @@ const updateEmployee = async (req, res) => {
       dateStartWorking,
       info,
       avatar,
-      clients,
       projects,
     } = req.body;
     const { id } = req.params;
@@ -82,7 +91,6 @@ const updateEmployee = async (req, res) => {
         dateStartWorking,
         info,
         avatar,
-        clients,
         projects,
       },
       { new: true }
