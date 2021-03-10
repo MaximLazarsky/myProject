@@ -1,5 +1,10 @@
-import { TOGLE_IS_LOGIN, SET_ERROR } from "../types";
-// import { loginAdmin } from "../actions/loginAdmin";
+import {
+  SET_IS_LOGIN,
+  SET_ERROR,
+  TOGLE_IS_LOADING,
+  GET_DATA,
+  LOGOUT,
+} from "../types";
 
 const defaultState = {
   data: {},
@@ -10,15 +15,32 @@ const defaultState = {
 
 export default function adminReducer(state = defaultState, action) {
   switch (action.type) {
-    case TOGLE_IS_LOGIN:
+    case LOGOUT:
       return {
         ...state,
-        isLogin: !state.isLogin,
+        data: {},
+        isLogin: false,
+      };
+    case SET_IS_LOGIN:
+      return {
+        ...state,
+        isLogin: true,
+      };
+    case TOGLE_IS_LOADING:
+      return {
+        ...state,
+        isLoading: !state.isLoading,
       };
     case SET_ERROR:
       return {
         ...state,
         err: action.payload,
+      };
+    case GET_DATA:
+      const { adminData } = action.payload;
+      return {
+        ...state,
+        data: adminData,
       };
     default:
       return state;

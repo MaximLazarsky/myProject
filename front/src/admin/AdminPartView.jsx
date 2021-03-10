@@ -3,8 +3,9 @@ import LoginAdmin from "./pages/LoginAdmin"
 import NavbarContainer from "./components/navbar/NavbarContainer"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { adminRoutes } from "./routes"
+import PropagateLoader from "react-spinners/PropagateLoader";
 
-export default function AdminPartView({isLogin}) {
+export default function AdminPartView({isLogin, isLoading}) {
     return (
             <main>
                 { !isLogin ?
@@ -12,6 +13,7 @@ export default function AdminPartView({isLogin}) {
                     <LoginAdmin/>
                 </div> :
                 <>
+                    { !isLoading ?
                     <Router>
                         <NavbarContainer />
                         <Switch>
@@ -21,7 +23,9 @@ export default function AdminPartView({isLogin}) {
                                 )
                             })}
                         </Switch>
-                    </Router>
+                    </Router> : 
+                    <PropagateLoader color={"#3f51b5"} size={30} />
+                    }
                 </>
                 }
             </main> 

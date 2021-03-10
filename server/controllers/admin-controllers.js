@@ -56,7 +56,7 @@ const loginAdmin = async (req, res) => {
 
 const getData = async (req, res) => {
   try {
-    const admin = await await Admin.findById(req.user._id)
+    const admin = await Admin.findById(req.user._id)
       .populate({
         path: "employees",
         model: "Employees",
@@ -69,8 +69,14 @@ const getData = async (req, res) => {
       .populate("clients")
       .populate("projects");
 
+    const adminData = {
+      employees: admin.employees,
+      clients: admin.clients,
+      projects: admin.projects,
+    };
+
     return res.json({
-      admin,
+      adminData,
     });
   } catch (e) {
     console.log(e);

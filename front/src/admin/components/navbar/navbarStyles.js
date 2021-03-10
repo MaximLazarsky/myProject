@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    background: "#e4f4e4",
   },
   navLinksList: {
     padding: "0",
@@ -46,12 +47,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     transition: "color 0.3s ease-in",
     "&:hover": {
-      color: "#266f59",
+      color: "#2caa52",
       transition: "color 0.3s ease-in",
     },
   },
+  menuLink: {
+    fontSize: "24px",
+  },
   selectedNavBarLink: {
-    color: "#2caa52",
+    color: "#266f59",
     transition: "color 0.3s ease-in",
   },
 }));

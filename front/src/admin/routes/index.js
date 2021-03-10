@@ -1,39 +1,39 @@
-import Main from "../pages/Main";
-import Clients from "../pages/Clients";
-import Employees from "../pages/Employees";
-import Projects from "../pages/Projects";
-import Messages from "../pages/Messages";
-import Stats from "../pages/Stats";
+import MainPage from "../pages/MainPage";
+import ClientsPage from "../pages/ClientsPage";
+import EmployeesPage from "../pages/EmployeesPage";
+import ProjectsPage from "../pages/ProjectsPage";
+import MessagesPage from "../pages/MessagesPage";
+import StatsPage from "../pages/StatsPage";
 
 export const adminRoutes = [
   {
     path: "/admin/main",
-    component: Main,
+    component: MainPage,
     text: "main",
   },
   {
     path: "/admin/employees",
-    component: Employees,
+    component: EmployeesPage,
     text: "employees",
   },
   {
     path: "/admin/clients",
-    component: Clients,
+    component: ClientsPage,
     text: "clients",
   },
   {
     path: "/admin/projects",
-    component: Projects,
+    component: ProjectsPage,
     text: "projects",
   },
   {
     path: "/admin/messages",
-    component: Messages,
+    component: MessagesPage,
     text: "messages",
   },
   {
     path: "/admin/stats",
-    component: Stats,
+    component: StatsPage,
     text: "stats",
   },
 ];

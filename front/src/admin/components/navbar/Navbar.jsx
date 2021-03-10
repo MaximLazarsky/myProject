@@ -4,11 +4,12 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
+import CloseIcon from '@material-ui/icons/Close';
 import { NavLink } from "react-router-dom";
 import { adminRoutes } from "../../routes"
 import useStyles from './navbarStyles'
 
-export default function Navbar({onLogoutClick , isOpenMenu, onBurgerClickOpenHandler}) {
+export default function Navbar({onLogoutClick , isOpenMenu, onBurgerClickOpenHandler, onCrossClickCloseHandler}) {
     const classes = useStyles()
     return (
     <AppBar position="fixed" className={classes.navbarBackground}>
@@ -17,15 +18,24 @@ export default function Navbar({onLogoutClick , isOpenMenu, onBurgerClickOpenHan
                 <MenuIcon />
             </IconButton>
             <Drawer 
+                style={{display:isOpenMenu ? "block": "none" }}
                 variant="persistent"
                 anchor="left"
                 open={isOpenMenu}
                 >
                     <ul className={classes.menuNavLinksList}>
+                        <IconButton color="primary" onClick={onCrossClickCloseHandler}>
+                            <CloseIcon />
+                        </IconButton>
                         {adminRoutes.map((el)=>{
                         return (
                             <li key={el.text}>
-                                <NavLink className={classes.navBarLink} activeClassName={classes.selectedNavBarLink} to={el.path}>
+                                <NavLink 
+                                    className={`${classes.navBarLink} ${classes.menuLink}`} 
+                                    activeClassName={classes.selectedNavBarLink} 
+                                    to={el.path} 
+                                    onClick={onCrossClickCloseHandler}
+                                >
                                     {el.text} 
                                 </NavLink>
                             </li>
