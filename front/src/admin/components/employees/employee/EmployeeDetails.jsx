@@ -2,6 +2,7 @@ import useStyles from './employeeStyles'
 import {IconButton, Avatar} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EmployeeProjectsList from './employeeProjectsList/EmployeeProjectsList'
 
 export default function EmployeeDetails({employee}) {
     const classes = useStyles()
@@ -23,9 +24,7 @@ export default function EmployeeDetails({employee}) {
                             {`more than ${employee.expiriense}`}
                         </div>
                     </div>
-                    <div>
-                        Projects List
-                    </div>
+                    <EmployeeProjectsList projects={employee.projects}/>
                 </div>
                 <div className={classes.emplaoyeeButtons}>
                     <IconButton color="primary">
