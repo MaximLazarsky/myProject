@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   clientItem: {
     padding: "20px",
-	margin: "3px"
+	marginBottom: "5px" 
   },
   clientData: {
 	display: "flex",
@@ -28,7 +28,14 @@ const useStyles = makeStyles((theme) => ({
 clientButtons: {
 	paddingTop: "10px",
 	textAlign: "right",
-}
+},
+clientDataProjects: {
+	display: "flex",
+	justifyContent: "space-between",
+},
+// clientsDataProjectItem: {
+// 	marginLeft: "40px"
+// }
 }));
 
 export default useStyles;

@@ -22,7 +22,15 @@ console.log(client.projects.length)
 					{client.clientEmail}
 				</div>
 				<div className={`${classes.clientDataItem} ${classes.clietDataRightPosition}`}> 
-					{client.projects.length ? client.projects.map((project) => <div key={project._id}>{project.projectName}</div>):<div>No projects</div>}
+					{client.projects.length ? client.projects.map((project) => <div className={classes.clientDataProjects} key={project._id}>
+						<div>
+						{project.projectName}
+						</div>
+						<div className={classes.clientsDataProjectItem}>
+						{project.earned}
+						</div>
+						
+						</div>):<div>No projects</div>}
 				</div>
 				
 			</div>
