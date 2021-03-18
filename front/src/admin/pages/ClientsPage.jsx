@@ -1,3 +1,5 @@
+import ClientsContainer from "../components/clients/ClientsContainer"
+
 export default function Clients() {
-    return <h1>Clients page</h1>
+    return <ClientsContainer />
 }
