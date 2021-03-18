@@ -16,8 +16,6 @@ export default function NavbarContainer() {
         dispatch(logout())
     }
 
-
-    console.log(history)
     const onBurgerClickOpenHandler = () => setIsOpenMenu(true)
     const onCrossClickCloseHandler = () => setIsOpenMenu(false)
 

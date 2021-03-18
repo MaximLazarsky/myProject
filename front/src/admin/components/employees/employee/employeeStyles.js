@@ -80,17 +80,22 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "end",
     padding: "20px 0",
   },
+  employeeProjectsList: {
+    width: "30%"
+  },
   projectsItem: {
     display: "flex",
-    width: "30%",
-    fontSize: "14px"
+    width: "100%",
+    fontSize: "14px",
+    marginBottom: "5px"
   },
   projectClient: {
     marginLeft: "auto"
   },
   projectName: {
     marginLeft: "10px",
-    textTransform: "capitalize"
+    textTransform: "capitalize",
+    width: "45%"
   },
   projectSucsses: {
     margin: "0 20px",
