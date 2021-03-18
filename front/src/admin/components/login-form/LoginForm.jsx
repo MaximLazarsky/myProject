@@ -2,7 +2,13 @@ import React from 'react'
 import {TextField, Button} from '@material-ui/core';
 import useStyles from './loginFormStyles'
 
-export default function LoginForm({err, validationEmailOnBlur, onClickLoginAdmin, onChangeEmailHandler, onChangePasswordHandler}) {
+export default function LoginForm({
+    err, 
+    validationEmailOnBlur, 
+    onClickLoginAdmin, 
+    onChangeEmailHandler, 
+    onChangePasswordHandler, 
+}) {
     const classes  = useStyles()
 
     return(
@@ -17,6 +23,7 @@ export default function LoginForm({err, validationEmailOnBlur, onClickLoginAdmin
             onBlur={validationEmailOnBlur}
             />
             <TextField
+            type="password"
             className = {classes.input}
             error = {!!err}
             label="Password"

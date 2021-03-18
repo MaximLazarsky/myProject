@@ -3,7 +3,7 @@ import useStyles from './employeesStyles'
 import {Typography, Button} from '@material-ui/core';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 
-export default function Employees({employees}) {
+export default function Employees({employees, onClickPushAddclient}) {
     const classes = useStyles()
     return(
         <div className={`container ${classes.employeesContainer}`}>
@@ -11,7 +11,9 @@ export default function Employees({employees}) {
             <div>
                 {employees.map((employee)=> <EmployeeContainer key={employee._id} employee={employee}/>)}
             </div>
-            <Button color="primary" variant="outlined" endIcon={<AccessibilityNewIcon />}>add employee</Button>
+                <Button color="primary" variant="outlined" endIcon={<AccessibilityNewIcon />} onClick={onClickPushAddclient}>  
+                    add employee
+                </Button>
         </div>
     )
 }

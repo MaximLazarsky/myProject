@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     marginBottom: "30px",
   },
+  linkButton: {
+    textDecoration: "none"
+  }
 }));
 
 export default useStyles;

@@ -10,16 +10,16 @@ export default function EmployeeDetails({employee}) {
         <div className={classes.employeeItemDetails}>
                 <div className={classes.employeeItemDetailsContent}>
                     <Avatar src={`${employee.avatar}`} alt="avatar" className={classes.employeeAvatar}/>
-                    <div>
-                        <div>
+                    <div className={classes.employeeItemDetailsContentTetx}>
+                        <div className={classes.employeeItemDetailsContentInfo}>
                             <span> information: </span>
                             {` ${employee.info}`}
                         </div>
-                        <div>
+                        <div className={classes.employeeItemDetailsContentSkills}>
                             <span> skills: </span>
                             {` ${employee.skills}`}
                         </div>
-                        <div>
+                        <div className={classes.employeeItemDetailsContentExpiriense}>
                             <span> expiriense: </span>
                             {`more than ${employee.expiriense}`}
                         </div>

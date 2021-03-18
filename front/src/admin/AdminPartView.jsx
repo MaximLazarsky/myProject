@@ -4,6 +4,7 @@ import NavbarContainer from "./components/navbar/NavbarContainer"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { adminRoutes } from "./routes"
 import PropagateLoader from "react-spinners/PropagateLoader";
+import EmpoloyeeAddUpdatePage from "./pages/EmployeeAddUpdatePage"
 
 export default function AdminPartView({isLogin, isLoading}) {
     return (
@@ -17,6 +18,7 @@ export default function AdminPartView({isLogin, isLoading}) {
                     <Router>
                         <NavbarContainer />
                         <Switch>
+                            <Route path="/admin/employees/add_employee" component={EmpoloyeeAddUpdatePage} />
                             {adminRoutes.map((el)=>{
                                 return(
                                     <Route key={el.path} path={el.path} component={el.component} />
