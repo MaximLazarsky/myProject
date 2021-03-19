@@ -1,14 +1,16 @@
 import {Paper} from '@material-ui/core';
+import ClientMenu from './ClientMenu';
 import useStyles from './clientItemStyles';
-import {IconButton, Avatar} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+
 
 export default function ClientItem ({client}) {
 console.log(client.projects.length)
 	const classes = useStyles()
 	return (
 		<Paper className={classes.clientItem}>
+
+			{/* <MoreVert fontSize="small" /> */}
+
 			<div className={classes.clientData}>
 				<div className={`${classes.clientDataItem} ${classes.clietDataLeftPosition}`}>
 					<div>
@@ -32,17 +34,8 @@ console.log(client.projects.length)
 						
 						</div>):<div>No projects</div>}
 				</div>
-				
+				<ClientMenu />	
 			</div>
-			<div className={classes.clientButtons}>
-                    <IconButton color="primary">
-                        <EditIcon />
-                    </IconButton>
-                    <IconButton color="primary">
-                        <DeleteIcon />
-                    </IconButton>
-                </div>
         </Paper>
-		
 	)
 }

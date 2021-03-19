@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme) => ({
 	display: "flex",
 	fontFamily: "Roboto",
 	fontSize: "14px",
-	paddingBottom: "15px",
-    borderBottom: "1px solid #3f51b5",
+
   },
   clientDataItem: {
 	width: "33%",
@@ -33,9 +32,6 @@ clientDataProjects: {
 	display: "flex",
 	justifyContent: "space-between",
 },
-// clientsDataProjectItem: {
-// 	marginLeft: "40px"
-// }
 }));
 
 export default useStyles;
