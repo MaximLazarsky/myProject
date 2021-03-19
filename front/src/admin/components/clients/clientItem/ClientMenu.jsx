@@ -25,7 +25,7 @@ export default function SimpleMenu() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreVertIcon color="primary"/>
       </IconButton>
       <Menu
         id="simple-menu"

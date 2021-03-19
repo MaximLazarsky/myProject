@@ -36,6 +36,13 @@ totalAmount: {
 	color: "rgb(38, 111, 89)",
 	fontWeight: "800"
 },
+clientCopyEmail: {
+	cursor: "pointer",
+	"&:active": {
+		color: "rgb(38, 111, 89)",
+	  },
+},
+
 }));
 
 export default useStyles;
