@@ -9,9 +9,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     marginBottom: "30px",
   },
+  linkButtonPosition: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  linkButtonStyles: {
+    height: "40px",
+  },
   linkButton: {
     textDecoration: "none"
-  }
+  },
 }));
 
 export default useStyles;
