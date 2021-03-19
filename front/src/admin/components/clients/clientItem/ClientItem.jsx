@@ -1,16 +1,13 @@
 import {Paper} from '@material-ui/core';
 import ClientMenu from './ClientMenu';
 import useStyles from './clientItemStyles';
+import ClientTotalAmountContainer from './ClientTotalAmountContainer'
 
 
 export default function ClientItem ({client}) {
-console.log(client.projects.length)
 	const classes = useStyles()
 	return (
 		<Paper className={classes.clientItem}>
-
-			{/* <MoreVert fontSize="small" /> */}
-
 			<div className={classes.clientData}>
 				<div className={`${classes.clientDataItem} ${classes.clietDataLeftPosition}`}>
 					<div>
@@ -19,7 +16,9 @@ console.log(client.projects.length)
 					<div>
 						{client.clientSurname}
 					</div>
+					
 				</div>
+				<ClientTotalAmountContainer projects={client.projects}/>
 				<div className={`${classes.clientDataItem} ${classes.clietDataCenterPosition}`}>
 					{client.clientEmail}
 				</div>

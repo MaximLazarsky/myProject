@@ -32,6 +32,10 @@ clientDataProjects: {
 	display: "flex",
 	justifyContent: "space-between",
 },
+totalAmount: {
+	color: "rgb(38, 111, 89)",
+	fontWeight: "800"
+},
 }));
 
 export default useStyles;
