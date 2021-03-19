@@ -1,26 +1,14 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
-
-const options = [
-	<IconButton color="primary">
-		<EditIcon />
-	</IconButton>,
-	<IconButton color="primary">
-		<DeleteIcon />
-	</IconButton>,
-];
-
-const ITEM_HEIGHT = 48;
-
-export default function LongMenu() {
+export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,23 +29,22 @@ export default function LongMenu() {
         <MoreVertIcon />
       </IconButton>
       <Menu
-        id="long-menu"
+        id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
-        open={open}
+        open={Boolean(anchorEl)}
         onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '80px',
-          },
-        }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-            {option}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={handleClose}>
+          <IconButton color="primary">
+              <EditIcon />
+          </IconButton>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <IconButton color="primary">
+            <DeleteIcon />
+          </IconButton>
+        </MenuItem>
       </Menu>
     </div>
   );
