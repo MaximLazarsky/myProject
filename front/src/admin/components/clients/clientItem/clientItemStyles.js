@@ -33,13 +33,13 @@ clientDataProjects: {
 	justifyContent: "space-between",
 },
 totalAmount: {
-	color: "rgb(38, 111, 89)",
+	color: "#3f51b5",
 	fontWeight: "800"
 },
 clientCopyEmail: {
 	cursor: "pointer",
 	"&:active": {
-		color: "rgb(38, 111, 89)",
+		color: "#3f51b5",
 	  },
 },
 
