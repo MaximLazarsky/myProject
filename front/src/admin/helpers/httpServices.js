@@ -14,3 +14,16 @@ export const fetchGetData = async () => {
   });
   return response;
 };
+
+export const fetchAddClient = async (name, surneme, email) => {
+  const response = await axios.post("http://localhost:5000/api/", 
+  {
+    clientName: name,
+    clientSurname: surneme,
+    clientEmail: email
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  return response;
+}

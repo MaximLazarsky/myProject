@@ -1,13 +1,11 @@
 import useStyles from './clientItemStyles';
 import Tooltip from '@material-ui/core/Tooltip';
 
-export default function ClientCopyEmailContainer({email}) {
-function сopyingEmailInClipboard () {
-	navigator.clipboard.writeText(email)
-}
+export default function ClientCopyEmailContainer({email, isCopied ,сopyingEmailInClipboard}) {
+
 const classes = useStyles()
 	return (
-	<Tooltip title="Click to copy" arrow>
+	<Tooltip title={"Click to copy"} arrow>
     	<div className={classes.clientCopyEmail} onClick={сopyingEmailInClipboard}>
 	 		{email}
 		</div>

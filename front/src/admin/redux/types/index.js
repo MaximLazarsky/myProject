@@ -4,3 +4,4 @@ export const SET_IS_LOGIN = "SET_IS_LOGIN";
 export const TOGLE_IS_LOADING = "TOGLE_IS_LOADING";
 export const GET_DATA = "GET_DATA";
 export const LOGOUT = "LOGOUT";
+export const ADD_CLIENT = "ADD_CLIENT"
