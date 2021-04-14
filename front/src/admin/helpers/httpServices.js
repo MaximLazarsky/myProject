@@ -15,15 +15,36 @@ export const fetchGetData = async () => {
   return response;
 };
 
-export const fetchAddClient = async (name, surneme, email) => {
-  const response = await axios.post("http://localhost:5000/api/", 
+export const fetchAddClient = async (name, surname, email) => {
+  const response = await axios.post("http://localhost:5000/api/clients", 
   {
     clientName: name,
-    clientSurname: surneme,
+    clientSurname: surname,
     clientEmail: email
   },
   {
     headers: { Authorization: localStorage.getItem("Authorization") },
   })
   return response;
+}
+
+export const fetchDeleteClient = async (clientId) => {
+  const response = await axios.delete(`http://localhost:5000/api/clients/${clientId}`, 
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") }
+  })
+    return response;
+}
+
+export const fetchUpdateClient = async (clientId, name, surname, email) => {
+  const response = await axios.put(`http://localhost:5000/api/clients/${clientId}`, 
+  {
+    clientName: name,
+    clientSurname: surname,
+    clientEmail: email
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") }
+  })
+    return response;
 }

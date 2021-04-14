@@ -7,9 +7,10 @@ export default function AdminPartContainer() {
     const dispatch = useDispatch()
     const { isLogin, isLoading } = useSelector((state)=> state.data)
 
+    
     useEffect(()=>{
         if(localStorage.getItem("Authorization")) dispatch(togleIsLogin())
-    },[])
+    }, [])
 
     return <AdminPartView isLogin={isLogin} isLoading={isLoading} />
 }

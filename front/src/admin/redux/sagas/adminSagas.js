@@ -1,4 +1,4 @@
-import { takeLatest, put } from "redux-saga/effects";
+import { takeLatest, put} from "redux-saga/effects";
 import { fetchLoginAdmin, fetchGetData } from "../../helpers/httpServices";
 import {
   LOGIN_ADMIN,
@@ -27,7 +27,7 @@ const loginAdminSaga = function* ({ payload }) {
 const getAdminData = function* () {
   try {
     yield put({ type: TOGLE_IS_LOADING });
-    const { data } = yield fetchGetData();
+    const { data } = yield (fetchGetData())
     yield put(getData(data));
     yield put({ type: TOGLE_IS_LOADING });
   } catch (e) {

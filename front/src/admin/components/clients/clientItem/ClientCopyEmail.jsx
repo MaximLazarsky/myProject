@@ -1,7 +1,7 @@
 import useStyles from './clientItemStyles';
 import Tooltip from '@material-ui/core/Tooltip';
 
-export default function ClientCopyEmailContainer({email, isCopied ,сopyingEmailInClipboard}) {
+export default function ClientCopyEmail({email, сopyingEmailInClipboard}) {
 
 const classes = useStyles()
 	return (

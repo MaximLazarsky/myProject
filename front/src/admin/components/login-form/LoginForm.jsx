@@ -21,6 +21,7 @@ export default function LoginForm({
             variant="outlined"
             onChange={onChangeEmailHandler}
             onBlur={validationEmailOnBlur}
+            autoComplete="off"
             />
             <TextField
             type="password"
@@ -29,6 +30,7 @@ export default function LoginForm({
             label="Password"
             variant="outlined"
             onChange={onChangePasswordHandler}
+            autoComplete="off"
             />
             <Button className = {classes.button} variant="outlined" color="primary" onClick={onClickLoginAdmin}>
                 Login

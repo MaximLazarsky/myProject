@@ -71,6 +71,12 @@ iconClose: {
 	marginLeft: "80px",
 	color: "#3f51b5",
 },
+  input: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
 }));
 
 export default useStyles;

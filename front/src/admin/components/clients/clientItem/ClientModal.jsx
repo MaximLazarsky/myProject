@@ -1,4 +1,3 @@
-import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -9,19 +8,24 @@ import useStyles from './clientItemStyles';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function TransitionsModal() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+export default function ClientModal({open, 
+  toggleOpen, 
+  onChangeName, 
+  onChangeSurname, 
+  onChangeEmail,
+  title,
+  buttonName,
+  currentClientName,
+  currentClientSurname,
+  currentClientEmail,
+  onClickAction
+  }) {
 
-  const toggleOpen = () => {
-    setOpen(!open);
-  };
+  const classes = useStyles();
 
   return (
     <div>
-      <Button className={classes.linkButtonStyles} onClick={toggleOpen} color="primary" variant="outlined" endIcon={<AccessibilityNewIcon />} >  
-				add client
-		  </Button>
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -40,16 +44,19 @@ export default function TransitionsModal() {
           <CloseIcon />
           </IconButton>
             <h2 className={classes.modalTitle}>
-              Add new client
+              {title}
             </h2>
-            <ClientInput clientParams={"Name"}/>
-            <ClientInput clientParams={"Surname"}/>
-            <ClientInput clientParams={"Email"}/>
-            <Button className={classes.modalButton} color="primary" variant="outlined" endIcon={<AccessibilityNewIcon /> } onClick={toggleOpen} >  
-				      add client
-		        </Button>
+            <ClientInput clientParams={"Name"} onChange={onChangeName} defaultValue={currentClientName}  />
+            <ClientInput clientParams={"Surname"} onChange={onChangeSurname} defaultValue={currentClientSurname}/>
+            <ClientInput clientParams={"Email"} onChange={onChangeEmail} defaultValue={currentClientEmail}/>
+              <Button className={classes.modalButton} 
+              color="primary" 
+              variant="outlined" 
+              endIcon={<AccessibilityNewIcon />} 
+              onClick={onClickAction}>  
+                {buttonName}
+              </Button> :
           </div>
-           
         </Fade>
       </Modal>
     </div>
