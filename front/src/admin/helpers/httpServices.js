@@ -48,3 +48,47 @@ export const fetchUpdateClient = async (clientId, name, surname, email) => {
   })
     return response;
 }
+
+export const fetchAddEmployee = async (name, surname, position, skills, expiriense, dateStartWorking, info) => {
+  const response = await axios.post("http://localhost:5000/api/employees", 
+  {
+      employeeName: name,
+      employeeSurname: surname,
+      employeePosition: position,
+      skills: skills,
+      expiriense: expiriense,
+      dateStartWorking: dateStartWorking,
+      info: info
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  return response;
+}
+
+export const fetchDeleteEmployee = async (employeeId) => {
+  const response = await axios.delete(`http://localhost:5000/api/employees/${employeeId}`, 
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") }
+  })
+    return response;
+}
+
+export const fetchUpdateEmployee = async (employeeId, name, surname, position, skills, expiriense, dateStartWorking, info) => {
+  console.log("employeeId HTTPSERVICES", employeeId)
+  const response = await axios.put(`http://localhost:5000/api/employees/${employeeId}`, 
+  {
+      employeeName: name,
+      employeeSurname: surname,
+      employeePosition: position,
+      skills: skills,
+      expiriense: expiriense,
+      dateStartWorking: dateStartWorking,
+      info: info
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  console.log("response", response)
+  return response;
+}

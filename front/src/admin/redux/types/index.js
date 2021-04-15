@@ -7,3 +7,6 @@ export const LOGOUT = "LOGOUT";
 export const ADD_CLIENT = "ADD_CLIENT"
 export const DELETE_CLIENT = "DELETE_CLIENT"
 export const UPDATE_CLIENT = "UPDATE_CLIENT"
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE"
+export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE"
+export const UPDATE_EMPLOYEE = "UPDATE_EMPLOYEE"

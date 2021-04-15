@@ -18,11 +18,11 @@ const addNewEmployee = async (req, res) => {
       employeeName,
       employeeSurname,
       employeePosition,
-      skills: skills || null,
-      expiriense: expiriense || null,
+      skills: skills || '',
+      expiriense: expiriense || '',
       dateStartWorking,
-      info: info || null,
-      avatar: avatar || null,
+      info: info || '',
+      avatar: avatar || '',
       projects: projects || [],
     });
 
@@ -91,7 +91,7 @@ const updateEmployee = async (req, res) => {
         dateStartWorking,
         info,
         avatar,
-        projects,
+        projects: projects || [],
       },
       { new: true }
     );

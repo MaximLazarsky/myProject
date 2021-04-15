@@ -1,4 +1,4 @@
-import AddUpadateEmployeeForm from "../components/addUpdateEmployeeForm/AddUpdateEmployeeForm"
+import AddUpadateEmployeeForm from "../components/employees/addUpdateEmployeeForm/AddUpdateEmployeeForm"
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import {Link} from 'react-router-dom'
 import {makeStyles} from '@material-ui/core/styles'
