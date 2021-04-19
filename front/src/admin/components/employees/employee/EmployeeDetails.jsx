@@ -8,37 +8,43 @@ import {deleteEmployee} from '../../../redux/actions/employees'
 import {updateEmployee} from '../../../redux/actions/employees'
 import {useDispatch} from 'react-redux'
 import AddUpdateEmployeeForm from '../addUpdateEmployeeForm/AddUpdateEmployeeForm'
+import useInput from '../../../hooks/useInput';
 
 export default function EmployeeDetails({employee}) {
     const classes = useStyles()
     const dispatch = useDispatch()
     const employeeId = employee._id
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
 
-
-    const [avatar, setAvatar] = useState('')
-    const [name, setName] = useState(employee.employeeName)
-    const [surname, setSurname] = useState(employee.employeeSurname)
-    const [position, setPosition] = useState(employee.employeePosition)
-    const [skills, setSkills] = useState(employee.skills)
-    const [expiriense, setExpiriense] = useState(employee.expiriense)
-    const [dateStartWorking, setDateStartWorking] = useState(employee.dateStartWorking)
-    const [info, setInfo] = useState(employee.info)
-
+    const avatar = useInput('')
+    const name = useInput(employee.employeeName)
+    const surname = useInput(employee.employeeSurname)
+    const position = useInput(employee.employeePosition)
+    const skills = useInput(employee.skills)
+    const expiriense = useInput(employee.expiriense)
+    const dateStartWorking = useInput(employee.dateStartWorking)
+    const info = useInput(employee.info)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    console.log("employeeId", employeeId)
     const onClickDeleteEmployee = () => dispatch(deleteEmployee(employeeId))
     
-    
     const onClickUpdateEmployee = () => {
-        dispatch(updateEmployee({employeeId, name, surname, position, skills, expiriense, dateStartWorking, info}))}
+        dispatch(updateEmployee({
+            employeeId,
+            name: name.value, 
+            surname: surname.value, 
+            position: position.value,
+            skills: skills.value,
+            expiriense: expiriense.value, 
+            dateStartWorking: dateStartWorking.value,
+            info: info.value,
+        }))}
 
     return(
         <div className={classes.employeeItemDetails}>
                 <div className={classes.employeeItemDetailsContent}>
-                    <Avatar src={`${employee.avatar}`} alt="avatar" className={classes.employeeAvatar}/>
+                    {!!employee.avatar ? <img src={`/uploads/${employee.avatar}`} alt="avatar" className={classes.employeeAvatar}/> : <Avatar src={`${employee.avatar}`} alt="avatar" className={classes.employeeAvatar}/> } 
                     <div className={classes.employeeItemDetailsContentTetx}>
                         <div className={classes.employeeItemDetailsContentInfo}>
                             <span> information: </span>
@@ -74,14 +80,14 @@ export default function EmployeeDetails({employee}) {
                  onOpen={handleOpen}
                  onClose={handleClose}
                  employee={employee}
-                 setAvatar={setAvatar}
-                 setName={setName}
-                 setSurname={setSurname}
-                 setPosition={setPosition}
-                 setSkills={setSkills}
-                 setExpiriense={setExpiriense}
-                 setDateStartWorking={setDateStartWorking}
-                 setInfo={setInfo}
+                 avatar={avatar}
+                 name={name}
+                 surname={surname}
+                 position={position}
+                 skills={skills}
+                 expiriense={expiriense}
+                 dateStartWorking={dateStartWorking}
+                 info={info}
                  onClickAction={onClickUpdateEmployee}
                  />
             </div>

@@ -49,16 +49,17 @@ export const fetchUpdateClient = async (clientId, name, surname, email) => {
     return response;
 }
 
-export const fetchAddEmployee = async (name, surname, position, skills, expiriense, dateStartWorking, info) => {
+export const fetchAddEmployee = async (avatar, name, surname, position, skills, expiriense, dateStartWorking, info) => {
   const response = await axios.post("http://localhost:5000/api/employees", 
   {
-      employeeName: name,
-      employeeSurname: surname,
-      employeePosition: position,
-      skills: skills,
-      expiriense: expiriense,
-      dateStartWorking: dateStartWorking,
-      info: info
+    avatar: avatar,
+    employeeName: name,
+    employeeSurname: surname,
+    employeePosition: position,
+    skills: skills,
+    expiriense: expiriense,
+    dateStartWorking: dateStartWorking,
+    info: info
   },
   {
     headers: { Authorization: localStorage.getItem("Authorization") },
@@ -75,7 +76,6 @@ export const fetchDeleteEmployee = async (employeeId) => {
 }
 
 export const fetchUpdateEmployee = async (employeeId, name, surname, position, skills, expiriense, dateStartWorking, info) => {
-  console.log("employeeId HTTPSERVICES", employeeId)
   const response = await axios.put(`http://localhost:5000/api/employees/${employeeId}`, 
   {
       employeeName: name,
@@ -89,6 +89,22 @@ export const fetchUpdateEmployee = async (employeeId, name, surname, position, s
   {
     headers: { Authorization: localStorage.getItem("Authorization") },
   })
-  console.log("response", response)
   return response;
+}
+
+export const fetchAddImg = async (formData) => {
+    try {
+    const res = await axios.post("http://localhost:5000/api/file", 
+      formData,
+    {
+      headers: { Authorization: localStorage.getItem("Authorization") },
+    })
+    return res;
+  } catch (err) {
+    if (err.response.status === 500) {
+      console.log('There was a problem with the server')
+    } else {
+      console.log(err.response.data.msg)
+    }
+  }
 }
