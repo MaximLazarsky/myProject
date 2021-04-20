@@ -108,7 +108,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     color: "#5f5f5f",
     fontSize: "16px",
-  }
+  },
+  personIcon: {
+    height: "100px",
+    width: "100px",
+  },
 }));
 
 export default useStyles;

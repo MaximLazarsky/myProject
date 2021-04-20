@@ -24,9 +24,9 @@ function* deleteEmployee({payload}) {
 }
 
 function* updateEmployee({payload}) {
-	const {employeeId, name, surname, position, skills, expiriense, dateStartWorking, info} = payload
+	const {employeeId, avatar, name, surname, position, skills, expiriense, dateStartWorking, info} = payload
 	try{
-		yield fetchUpdateEmployee(employeeId, name, surname, position, skills, expiriense, dateStartWorking, info);
+		yield fetchUpdateEmployee(employeeId, avatar, name, surname, position, skills, expiriense, dateStartWorking, info);
 		yield put(togleIsLogin())		
 	} catch (e) {
 		console.log(e)
@@ -36,8 +36,7 @@ function* updateEmployee({payload}) {
 function* addImg({payload}) {
 	const {formData} = payload
 	try{
-		yield fetchAddImg(formData);
-		// yield put(togleIsLogin())		
+		yield fetchAddImg(formData);		
 	} catch (e) {
 		console.log(e)
 	}

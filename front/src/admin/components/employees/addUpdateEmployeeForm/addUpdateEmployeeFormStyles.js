@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
         border: "solid 1px rgb(223, 223, 223)",
         borderRadius: "4px",
         padding: "10.5px 14px",
+        marginTop: "27px",
         marginBottom: "30px",
         "&:hover": {
             border: "solid 1px rgb(59, 59, 59)",
@@ -68,11 +69,31 @@ const useStyles = makeStyles((theme) => ({
         width: "300px",
         margin: "0 auto"
     },
+    uploadImgWrap: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    uploadButton: {
+        padding: "8px 14px",
+        marginLeft: "15px",
+    },
     employeeAvatar: {
         height: "70px",
         width: "70px",
         margin: "0 auto 20px"
       },
+      uploaded: {
+        textAlign: "center"
+      },
+      uploadedImg: {
+          height: "90px",
+          width: "90px",
+          borderRadius: "50%",
+          border: "3px solid #3f51b5",
+          margin: "0 auto",
+          textAlign: "center"
+      }
 }));
 
 export default useStyles;

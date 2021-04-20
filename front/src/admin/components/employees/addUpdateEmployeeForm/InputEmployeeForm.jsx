@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import useStyles from './addUpdateEmployeeFormStyles';
 
-export default function InputEmployeeForm({onChange, defaultValue, lable}) {
+export default function InputEmployeeForm({onChange, defaultValue, lable, id}) {
   const classes = useStyles();
 
   return (
@@ -14,6 +14,7 @@ export default function InputEmployeeForm({onChange, defaultValue, lable}) {
       size="small"
       onChange={onChange} 
       noValidate 
-      autoComplete="off"/>
+      autoComplete="off"
+      id={id}/>
   );
 }

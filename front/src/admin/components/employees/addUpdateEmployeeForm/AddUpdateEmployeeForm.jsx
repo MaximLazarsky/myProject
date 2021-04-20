@@ -1,17 +1,16 @@
-import {TextField, Button, Avatar} from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import useStyles from "./addUpdateEmployeeFormStyles"
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import InputEmployeeForm from './InputEmployeeForm'
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import FileUpload from '../../fileUpload/FileUpload'
+import AvatarUploadContainer from '../employee/avatarUpload/AvatarUploadContainer'
+import DateEmployeeForm from './DateEmployeeForm'
 
 export default function AddUpdateEmployeeForm({buttonName,
     open, 
     employee, 
     onClose,
-    avatar,
     name,
     surname,
     position,
@@ -22,8 +21,6 @@ export default function AddUpdateEmployeeForm({buttonName,
     onClickAction,
 }) {
     const classes = useStyles()
-    console.log("avatar", avatar)
-
     return(
     <Modal
         aria-labelledby="transition-modal-title"
@@ -37,30 +34,9 @@ export default function AddUpdateEmployeeForm({buttonName,
           timeout: 500,
         }}
       >
-
         <Fade in={open} >
             <div className={classes.addUpdateForm}>
-                <Avatar alt="avatar" className={classes.employeeAvatar}>
-                   {avatar ? <img className={classes.productImg}  src={`/uploads/${avatar}`} alt="img"/> : <PersonOutlineIcon/>}
-                </Avatar>
-                {/* <label className={classes.lableAvatar} htmlFor="avatar">Download avatar: </label>  
-                <TextField
-                    {...avatar}
-                    className={classes.inputAddUpdateFormAvatar}
-                    id="avatar"
-                    variant="outlined"
-                    type="file"
-                /> */}
-
-
-
-                {/* end point at here  */}
-
-                
-
-
-
-                <FileUpload />
+                <AvatarUploadContainer employee={employee}/>
                 <InputEmployeeForm {...name}
                 lable={"Name"} 
                 defaultValue={employee ? employee.employeeName : ''}
@@ -81,10 +57,13 @@ export default function AddUpdateEmployeeForm({buttonName,
                 lable={"Expiriense"} 
                 defaultValue={employee ? employee.expiriense : ''}
                 />
+                
                 <InputEmployeeForm {...dateStartWorking}
                 lable={"Date Start Working"} 
                 defaultValue={employee ? employee.dateStartWorking : ''}
                 />
+                {/* <DateEmployeeForm /> */}
+                
                 <InputEmployeeForm {...info}
                 lable={"Info"} 
                 defaultValue={employee ? employee.info : ''}

@@ -2,7 +2,7 @@ import {
 	SET_CURRENT_EMPLOYEE_IMG,
   } from "../types";
   
-  const defaultState = {};
+  const defaultState = '';
   
   export default function setCurrentEmployeeImage(state = defaultState, action) {
 	switch (action.type) {

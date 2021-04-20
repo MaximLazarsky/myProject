@@ -75,9 +75,10 @@ export const fetchDeleteEmployee = async (employeeId) => {
     return response;
 }
 
-export const fetchUpdateEmployee = async (employeeId, name, surname, position, skills, expiriense, dateStartWorking, info) => {
+export const fetchUpdateEmployee = async (employeeId, avatar, name, surname, position, skills, expiriense, dateStartWorking, info) => {
   const response = await axios.put(`http://localhost:5000/api/employees/${employeeId}`, 
   {
+      avatar: avatar,
       employeeName: name,
       employeeSurname: surname,
       employeePosition: position,
