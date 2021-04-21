@@ -5,6 +5,7 @@ import useStyles from '../employeeStyles'
 
 export default function EmployeeProjectsList({projects}) {
     const classes = useStyles()
+    console.log("projects in employee", projects.length)
     return (
         <div className={classes.employeeProjectsList}>
             {projects.length ?

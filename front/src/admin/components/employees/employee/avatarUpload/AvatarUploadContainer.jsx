@@ -2,9 +2,14 @@ import {useState, useEffect} from 'react';
 import AvatarUpload from './AvatarUpload'
 import {addImg, setCurrentEmployeeImage} from '../../../../redux/actions/employees'
 import {useDispatch} from 'react-redux'
+import React from 'react';
+
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function AvatarUploadContainer ({employee}) {
 const dispatch = useDispatch()
+  const notify = () => toast("Avatar was added!");
   const [file, setFile] = useState('')
   const [fileName, setFileName] = useState('Download avatar')
   const [src, setSrc] = useState('')
@@ -25,6 +30,7 @@ const dispatch = useDispatch()
 
   const onclickSetImg = () => {
     dispatch(setCurrentEmployeeImage(fileName)) 
+    notify()
   }
 
   const onSubmit = (e) => {

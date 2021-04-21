@@ -93,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
           border: "3px solid #3f51b5",
           margin: "0 auto",
           textAlign: "center"
+      },
+      toastContainer: {
+          height: "800px"
       }
 }));
 

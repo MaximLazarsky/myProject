@@ -1,6 +1,6 @@
 import {Button} from '@material-ui/core';
 import useStyles from "./addUpdateEmployeeFormStyles"
-import InputEmployeeForm from './InputEmployeeForm'
+import InputForm from '../../utils/InputForm'
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -37,34 +37,34 @@ export default function AddUpdateEmployeeForm({buttonName,
         <Fade in={open} >
             <div className={classes.addUpdateForm}>
                 <AvatarUploadContainer employee={employee}/>
-                <InputEmployeeForm {...name}
+                <InputForm {...name}
                 lable={"Name"} 
                 defaultValue={employee ? employee.employeeName : ''}
                 />
-                <InputEmployeeForm {...surname}
+                <InputForm {...surname}
                 lable={"Surname"} 
                 defaultValue={employee ? employee.employeeSurname : ''}
                 />
-                <InputEmployeeForm {...position}
+                <InputForm {...position}
                 lable={"Position"} 
                 defaultValue={employee ? employee.employeePosition : ''}
                 />
-                <InputEmployeeForm {...skills}
+                <InputForm {...skills}
                 lable={"Skills"} 
                 defaultValue={employee ? employee.skills : ''}
                 />
-                <InputEmployeeForm {...expiriense}
+                <InputForm {...expiriense}
                 lable={"Expiriense"} 
                 defaultValue={employee ? employee.expiriense : ''}
                 />
                 
-                <InputEmployeeForm {...dateStartWorking}
+                <InputForm {...dateStartWorking}
                 lable={"Date Start Working"} 
                 defaultValue={employee ? employee.dateStartWorking : ''}
                 />
                 {/* <DateEmployeeForm /> */}
                 
-                <InputEmployeeForm {...info}
+                <InputForm {...info}
                 lable={"Info"} 
                 defaultValue={employee ? employee.info : ''}
                 />

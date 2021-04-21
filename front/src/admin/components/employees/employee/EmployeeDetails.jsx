@@ -5,6 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EmployeeProjectsList from './employeeProjectsList/EmployeeProjectsList'
 import AddUpdateEmployeeForm from '../addUpdateEmployeeForm/AddUpdateEmployeeForm'
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default function EmployeeDetails({employee,
     open,
@@ -55,14 +56,16 @@ export default function EmployeeDetails({employee,
                 <EmployeeProjectsList projects={employee.projects}/>
             </div>
             <div className={classes.emplaoyeeButtons}>
-                <IconButton color="primary" onClick={handleOpen}>
-                    <EditIcon />
-                </IconButton>
-                <IconButton color="primary"
-                onClick={onClickDeleteEmployee}
-                >
-                    <DeleteIcon />
-                </IconButton>
+                <Tooltip title="Update" placement="top" arrow>
+                    <IconButton color="primary" onClick={handleOpen}>
+                        <EditIcon />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete" placement="top" arrow>
+                    <IconButton color="primary"onClick={onClickDeleteEmployee}>
+                        <DeleteIcon />
+                    </IconButton>
+                </Tooltip>
             </div>
             <AddUpdateEmployeeForm buttonName={"Update employee info"}
                 open={open}

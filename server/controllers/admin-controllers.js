@@ -63,15 +63,26 @@ const getData = async (req, res) => {
         populate: {
           path: "projects",
           model: "Projects",
-          populate: { path: "client", model: "Clients" },
+          populate: { path: "clients", model: "Clients" }
         },
       })
       .populate({
         path: "clients", 
         model: "Clients", 
-        populate: { path: "projects", model: "Projects" }
+        populate: {
+          path: "projects",
+          model: "Projects",
+          // populate: { path: "employees", model: "Employees" },
+        },
       })
-      .populate("projects");
+      .populate({
+        path: "projects",
+        model: "Projects",
+        populate: {
+          path: "clients",
+          model: "Clients",
+      },
+      });
 
     const adminData = {
       employees: admin.employees,

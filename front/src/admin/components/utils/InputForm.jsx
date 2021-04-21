@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import useStyles from './addUpdateEmployeeFormStyles';
+import useStyles from './inputFormStyles';
 
-export default function InputEmployeeForm({onChange, defaultValue, lable, id}) {
+export default function InputForm({onChange, defaultValue, lable, id}) {
   const classes = useStyles();
 
   return (

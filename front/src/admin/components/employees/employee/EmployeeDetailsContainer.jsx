@@ -4,7 +4,7 @@ import useStyles from './employeeStyles'
 import {deleteEmployee} from '../../../redux/actions/employees'
 import {updateEmployee} from '../../../redux/actions/employees'
 import {useDispatch, useSelector} from 'react-redux'
-import useInput from '../../../hooks/useInput';
+import useInput from '../../utils/hooks/useInput';
 
 export default function EmployeeDetailsContainer ({employee}) {
     const dispatch = useDispatch()

@@ -4,6 +4,8 @@ import {TextField, Button} from '@material-ui/core';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import useStyles from '../../addUpdateEmployeeForm/addUpdateEmployeeFormStyles';
 import AccessMessage from './AccessMessage'
+import { ToastContainer, toast } from 'react-toastify';
+// import Tostify from '../../../utils/Tostify'
 
 export default function AvatarUpload({src,
   onSubmit,
@@ -12,7 +14,8 @@ export default function AvatarUpload({src,
   onclickSetImg
 }) {
   const classes = useStyles();
- 
+  // const notify = () => toast("Wow so easy!");
+
 
   return ( 
   <Fragment>
@@ -40,6 +43,17 @@ export default function AvatarUpload({src,
         >
           Add avatar
         </Button>
+        <ToastContainer className={classes.toastContainer}
+        position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
+        {/* <Tostify notify={notify}/> */}
         {/* <AccessMessage /> */}
       </div>      
 	  </form>

@@ -1,7 +1,7 @@
 import Employees from './Employees'
 import {addNewEmployee, setCurrentEmployeeImage} from '../../redux/actions/employees'
 import {useDispatch, useSelector} from 'react-redux'
-import useInput from '../../hooks/useInput';
+import useInput from '../utils/hooks/useInput';
 import {useState} from 'react'
 
 export default function EmployeesConteiner() {
