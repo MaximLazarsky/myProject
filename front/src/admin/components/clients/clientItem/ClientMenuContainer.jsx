@@ -19,7 +19,6 @@ export default function ClientMenuContainer ({clientId}) {
 	const toggleOpen = () => {
 		setOpen(!open);
 	};
-
 	const onClickUpdateClient = () => {
 		dispatch(updateClient({clientId, name, surname, email}))
 		toggleOpen()

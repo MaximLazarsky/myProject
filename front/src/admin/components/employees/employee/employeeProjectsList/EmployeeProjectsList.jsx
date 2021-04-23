@@ -3,9 +3,9 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import useStyles from '../employeeStyles'
 
+
 export default function EmployeeProjectsList({projects}) {
     const classes = useStyles()
-    console.log("projects in employee", projects.length)
     return (
         <div className={classes.employeeProjectsList}>
             {projects.length ?
@@ -23,7 +23,7 @@ export default function EmployeeProjectsList({projects}) {
                         <ThumbDownIcon />
                     }
                 </div>
-                <div className={classes.projectClient}>{project.client.clientSurname}</div>
+                <div className={classes.projectClient}>{project.client.clientName} {project.client.clientSurname}</div>
             </div> 
             ) : <div className={`${classes.noProjects} ${classes.projectsItem}`}> No projects, yet </div>}
         </div>

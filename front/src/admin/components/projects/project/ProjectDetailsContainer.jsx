@@ -1,14 +1,16 @@
 import ProjectDetails from './ProjectDetails'
-import {useSelector} from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 export default function ProjectDetailsContainer({project}) {
-	const {clients} = useSelector((state) => state.data.data)
-	const clientId = project.client
-	const indexCurrentClient = clients.map(function(client) { return client._id; }).indexOf(clientId)
-	const currentClient = clients[indexCurrentClient]
-	console.log("CURRENT", currentClient)
+	const history = useHistory()
+	const clientInfo = project.client
+	const onClickClientRedirection = () => history.push('/admin/clients')
+	const onClickCreateProjectRedirection = () => history.push('/admin/projects/createProject')
 
 	return (
-		<ProjectDetails project={project} currentClient={currentClient}/>
+		<ProjectDetails project={project} 
+		clientInfo={clientInfo} 
+		onClickКedirection={onClickClientRedirection}
+		onClickCreateProjectredirection={onClickCreateProjectRedirection}/>
 	)
 }

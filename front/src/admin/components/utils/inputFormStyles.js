@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
         "&:last-child": {
             marginBottom: "0",
         },
+        // width: "70%",
     },
 }))
 

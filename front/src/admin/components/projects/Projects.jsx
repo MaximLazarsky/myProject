@@ -2,9 +2,13 @@ import useStyles from './projectsStyles'
 import {Typography, Button} from '@material-ui/core';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import ProjectContainer from './project/ProjectContainer'
+import {useHistory} from 'react-router-dom'
 
 export default function Projects({projects}) {
 const classes = useStyles()
+const history = useHistory()
+const onClickCreateProjectRedirection = () => history.push('/admin/projects/createProject')
+
 	return (
 		<div className={`container ${classes.projectsContainer}`}>
 			<div className={classes.linkButtonPosition}>
@@ -14,7 +18,7 @@ const classes = useStyles()
 				color="primary" 
 				variant="outlined" 
 				endIcon={<AccessibilityNewIcon />} 
-				// onClick={handleOpen}
+				onClick={onClickCreateProjectRedirection}
 				>  
 					add project
 				</Button>
