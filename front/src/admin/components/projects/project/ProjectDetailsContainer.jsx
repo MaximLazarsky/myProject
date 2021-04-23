@@ -10,7 +10,7 @@ export default function ProjectDetailsContainer({project}) {
 	return (
 		<ProjectDetails project={project} 
 		clientInfo={clientInfo} 
-		onClickКedirection={onClickClientRedirection}
+		onClickClientRedirection={onClickClientRedirection}
 		onClickCreateProjectredirection={onClickCreateProjectRedirection}/>
 	)
 }

@@ -7,9 +7,6 @@ import SelectClient from './SelectClient'
 import SelectEmployee from './SelectEmployee'
 import TextField from '@material-ui/core/TextField'
 import Switch from './Switch'
-import {useState} from 'react'
-import { useHistory } from 'react-router-dom'
-
 
 export default function AddUpdateForm({clients, 
 	employees,
@@ -23,15 +20,13 @@ export default function AddUpdateForm({clients,
 }) {
 	const classes = useStyles()
 	
-	
-
 	return (
 		<div className={`container ${classes.projectsContainer}`}>
 			<div className={classes.linkButtonPosition}>
 				<Button className={classes.linkButtonStyles} variant="contained" color="primary" size="small">
-					<Link className={classes.linkButton} to='admin/projects'>BACK TO LIST OF EMPLOYEES </Link>  
+					<Link className={classes.linkButton} to='admin/projects'>BACK TO LPROJECTS </Link>  
 				</Button>
-				<Typography variant="h4" color="primary" className={classes.title}> Add or update Projects: </Typography>
+				<Typography variant="h4" color="primary" className={classes.title}> Add or update Projects </Typography>
 			</div>
 
 			<Paper className={classes.projectForm}>
