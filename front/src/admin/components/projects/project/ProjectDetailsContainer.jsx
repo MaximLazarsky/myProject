@@ -6,11 +6,14 @@ export default function ProjectDetailsContainer({project}) {
 	const clientInfo = project.client
 	const onClickClientRedirection = () => history.push('/admin/clients')
 	const onClickCreateProjectRedirection = () => history.push('/admin/projects/createProject')
+	const projectId = project._id
 
 	return (
 		<ProjectDetails project={project} 
 		clientInfo={clientInfo} 
 		onClickClientRedirection={onClickClientRedirection}
-		onClickCreateProjectredirection={onClickCreateProjectRedirection}/>
+		onClickCreateProjectredirection={onClickCreateProjectRedirection}
+		projectId={projectId}
+		/>
 	)
 }

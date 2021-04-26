@@ -4,10 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootSaga from "../sagas/rootSaga";
 import adminReducer from "./adminReducer";
 import currentEmploeeImage from "./currentEmploeeImage"
+import currentProjectReducer from './currentProjectReducer'
 
 const rootReduser = combineReducers({
   data: adminReducer,
   currentEmployeeImage: currentEmploeeImage,
+  currentProject: currentProjectReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

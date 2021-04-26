@@ -109,3 +109,60 @@ export const fetchAddImg = async (formData) => {
     }
   }
 }
+
+export const fetchAddProject = async (clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
+  const response = await axios.post("http://localhost:5000/api/projects", 
+  {
+    client: clientId,
+    projectName: projectName,
+    task: task,
+    skills: skills,
+    discription: discription,
+    dateStartWorking: startDate,
+    dateStopWorking: completionDate,
+    imgs: [],
+    linkProdaction: projectLink,
+    isActive: isActive,
+    isSuccess: isSuccess,
+    earned: earned,
+    platform: platform,
+    employee: employeeId,
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  return response;
+}
+
+export const fetchDeleteProject = async (projectId) => {
+  const response = await axios.delete(`http://localhost:5000/api/projects/${projectId}`, 
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") }
+  })
+    return response;
+}
+
+export const fetchUpdateProject = async (projectId, clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
+  const response = await axios.put(`http://localhost:5000/api/projects/${projectId}`, 
+  {
+    client: clientId,
+    projectName: projectName,
+    task: task,
+    skills: skills,
+    discription: discription,
+    dateStartWorking: startDate,
+    dateStopWorking: completionDate,
+    imgs: [],
+    linkProdaction: projectLink,
+    isActive: isActive,
+    isSuccess: isSuccess,
+    earned: earned,
+    platform: platform,
+    employee: employeeId,
+  },
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  console.log("response in HTTPservices", response)
+  return response;
+}

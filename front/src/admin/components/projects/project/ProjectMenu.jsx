@@ -5,8 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './projectStyles'
 
-
-export default function ProjectMenu({onClickCreateProjectredirection}) {
+export default function ProjectMenu({onClickCreateProjectredirection, onClickDeleteProject}) {
 	const classes=useStyles()
 
   return (
@@ -17,7 +16,7 @@ export default function ProjectMenu({onClickCreateProjectredirection}) {
             </IconButton>
         </Tooltip>
         <Tooltip title={"delete"} placement="bottom" arrow>
-            <IconButton color="primary">
+            <IconButton color="primary" onClick={onClickDeleteProject}>
               <DeleteIcon />
             </IconButton>
         </Tooltip>

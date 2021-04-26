@@ -10,7 +10,7 @@ export default function Switches({label, checked, onChange}) {
       <FormControlLabel
         control={<Switch checked={checked} onChange={onChange} color="primary" />}
         label={label}
-		labelPlacement="top"
+		    labelPlacement="top"
       />
     </FormGroup>
   );

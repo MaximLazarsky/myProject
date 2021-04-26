@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectEmployee({inputLabel, employees, handleChangeEmployeeId}) {
+export default function SelectEmployee({inputLabel, employees, employeeId, currentProject}) {
   const classes = useStyles();
 
   return (
@@ -27,8 +27,8 @@ export default function SelectEmployee({inputLabel, employees, handleChangeEmplo
       <FormControl variant="outlined" size="small" className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple" >{inputLabel}</InputLabel>
         <Select
+        {...employeeId}
           native
-          onChange={handleChangeEmployeeId}
           label={inputLabel}
         >
 			<option value="" ></option>

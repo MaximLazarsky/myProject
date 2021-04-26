@@ -10,13 +10,24 @@ import Switch from './Switch'
 
 export default function AddUpdateForm({clients, 
 	employees,
-	handleChangeClientId, 
-	handleChangeEmployeeId,
+	clientId,
+	projectName,
+	task,
+	skills,
+	discription,
+	startDate,
+	completionDate,
+	projectLink,
+	platform,
+	earned,
+	employeeId,
 	isActive,
 	isSuccess,
 	toggleCheckedIsActive,
 	toggleCheckedIsSuccess,
-	onClickButton
+	onClickAddProject,
+	currentProject,
+	
 }) {
 	const classes = useStyles()
 	
@@ -26,35 +37,67 @@ export default function AddUpdateForm({clients,
 				<Button className={classes.linkButtonStyles} variant="contained" color="primary" size="small">
 					<Link className={classes.linkButton} to='admin/projects'>BACK TO LPROJECTS </Link>  
 				</Button>
-				<Typography variant="h4" color="primary" className={classes.title}> Add or update Projects </Typography>
+				<Typography variant="h4" color="primary" className={classes.title}>
+					{!!currentProject ? "Update " : "Add "}
+					Projects 
+				</Typography>
 			</div>
 
 			<Paper className={classes.projectForm}>
 				<Typography variant="h6" color="primary" className={classes.secondTitle}> Add or update Projects </Typography>
 					<div className={classes.inputFormWrap}>
-						<SelectClient inputLabel={"Client"}
+						<SelectClient clientId={clientId}
+						inputLabel={"Client"}
 						clients={clients}
-						handleChangeClientId={handleChangeClientId}
+						currentProject={currentProject}
 						/>
-						<InputForm lable={"Project name"} />
-						<InputForm lable={"Task"} />
-						<InputForm lable={"Skills"} />
-						<TextField className={classes.textAreaInput}
+						<InputForm {...projectName}
+						lable={"Project name"} 
+						defaultValue={currentProject.projectName}
+						/>
+						<InputForm {...task}
+						lable={"Task"}
+						defaultValue={currentProject.task} 
+						/>
+						<InputForm {...skills}
+						lable={"Skills"} 
+						defaultValue={currentProject.skills} 
+						/>
+						<TextField {...discription}
+						className={classes.textAreaInput}
 						id="outlined-multiline-flexible"
-						label="discription"
+						label="Discription"
 						size="small"
 						multiline
 						rowsMax={4}
 						variant="outlined"
+						value={currentProject.discription} 
        					/>						
-						<InputForm lable={"Start date"} />
-						<InputForm lable={"Completion date"} />
-						<InputForm lable={"Project link"} />
-						<InputForm lable={"Platform"} />
-						<InputForm lable={"Earned"} />
-						<SelectEmployee inputLabel={"Employee"}
+						<InputForm {...startDate}
+						lable={"Start date"} 
+						defaultValue={currentProject.dateStartWorking} 						
+						/>
+						<InputForm {...completionDate}
+						lable={"Completion date"} 
+						defaultValue={currentProject.dateStopWorking} 						
+						/>
+						<InputForm {...projectLink}
+						lable={"Project link"}
+						defaultValue={currentProject.linkProdaction} 
+						/>
+						<InputForm {...platform}
+						lable={"Platform"} 
+						defaultValue={currentProject.platform} 
+						/>
+						<InputForm {...earned}
+						lable={"Earned"} 
+						defaultValue={currentProject.earned} 
+						/>
+						<SelectEmployee employeeId={employeeId}
+						inputLabel={"Employee"}
 						employees={employees}
-						handleChangeEmployeeId={handleChangeEmployeeId}
+						currentProject={currentProject}
+						// handleChangeEmployeeId={handleChangeEmployeeId}
 						/>
 						<div className={classes.switch}>
 							<Switch label={"is Active"}
@@ -65,14 +108,13 @@ export default function AddUpdateForm({clients,
 							checked={isSuccess}
 							onChange={toggleCheckedIsSuccess}
 							/>
-							
 						</div>
 						<Button variant="contained" 
 							color="primary" 
                 			className={classes.addUpdateButton}
-                			onClick={onClickButton}
+                			onClick={onClickAddProject}
                 			> 
-                				Add/update
+							{!!currentProject ? "Update " : "Add "}
                 		</Button>
 					</div>				
 			</Paper>

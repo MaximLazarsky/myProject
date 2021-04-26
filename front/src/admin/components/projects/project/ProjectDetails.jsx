@@ -5,9 +5,11 @@ import ProjectMenuContainer from './ProjectMenuContainer'
 export default function ProjectDetails({project, 
 	clientInfo, 
 	onClickClientRedirection,
-	onClickCreateProjectredirection
+	onClickCreateProjectredirection,
+	projectId
 }) {
 	const classes = useStyles()
+	
 	
 	return (
 		<div className={classes.projectItemDetails}>	
@@ -61,15 +63,13 @@ export default function ProjectDetails({project,
 					</div>										
 				</div>
 
-				<ProjectMenuContainer onClickCreateProjectredirection={onClickCreateProjectredirection}/>
+				<ProjectMenuContainer onClickCreateProjectredirection={onClickCreateProjectredirection}
+				projectId={projectId}
+				/>
 			</div>
 			<div className={classes.projectItemDetailsImagesWrap}>
 				{project.imgs.map((img, index) => <img className={classes.projectItemDetailsImages} src={img} alt="" key={index}/>)}
-				
-			</div>
-
-			
-			
+			</div>	
 		</div>
 	)
 }

@@ -1,10 +1,7 @@
-import {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -18,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SelectClient({inputLabel, clients, handleChangeClientId}) {
+export default function SelectClient({inputLabel, clients, clientId}) {
   const classes = useStyles();
 
   return (
@@ -27,15 +24,13 @@ export default function SelectClient({inputLabel, clients, handleChangeClientId}
       <FormControl variant="outlined" size="small" className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple" >{inputLabel}</InputLabel>
         <Select
+          {...clientId}
           native
-          onChange={handleChangeClientId}
           label={inputLabel}
         >
-			<option value="" ></option>
-      
-      {clients.map((client) => <option value={client._id} key={client._id}>{client.clientName} {client.clientSurname}</option>)}
-     
-        </Select>
+        <option value={""} ></option>
+        {clients.map((client) => <option value={client._id} key={client._id}>{client.clientName} {client.clientSurname}</option>)}
+      </Select>
       </FormControl>
     </div>
   );

@@ -1,12 +1,12 @@
 const { Schema, model, ObjectId } = require("mongoose");
 
 const Projects = new Schema({
-  client: { type: Schema.Types.ObjectId, required: true, ref: "Clients" },
-  projectName: { type: String, required: true },
+  client: { type: Schema.Types.ObjectId, ref: "Clients" },
+  projectName: { type: String,},
   task: { type: String },
   skills: { type: String },
   discription: { type: String },
-  dateStartWorking: { type: String, required: true },
+  dateStartWorking: { type: String, },
   dateStopWorking: { type: String },
   imgs: [{ type: String }],
   linkProdaction: { type: String },
