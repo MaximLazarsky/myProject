@@ -35,7 +35,6 @@ export default function AddUpdateFormComtainer() {
 		if (!!currentProject) {
 			dispatch(updateProject({
 				projectId: currentProject._id,
-				clientId: clientId.value,
 				projectName: projectName.value,
 				task: task.value,
 				skills: skills.value,
@@ -48,7 +47,6 @@ export default function AddUpdateFormComtainer() {
 				isSuccess,
 				earned: earned.value,
 				platform: platform.value,
-				employeeId: employeeId.value,
 			}))
 			dispatch(setCurrentProject(""))
 		} else {
@@ -71,6 +69,8 @@ export default function AddUpdateFormComtainer() {
 		}
         onClickButtonRedirect() 
     }
+
+	const onClickBackButton = () => dispatch(setCurrentProject(""))
 	
 	return (
 		<AddUpdateForm clients={clients}
@@ -92,6 +92,7 @@ export default function AddUpdateFormComtainer() {
 		toggleCheckedIsSuccess={toggleCheckedIsSuccess}
 		onClickAddProject={onClickAddProject}
 		currentProject={currentProject}
+		onClickBackButton={onClickBackButton}
 		/>
 	)
 }

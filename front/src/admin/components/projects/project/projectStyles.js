@@ -67,6 +67,16 @@ const useStyles = makeStyles((theme) => ({
   projectItemDetailsImages: {
     padding: "20px 10px",
   },
+  inputAddUpdateFormAvatar: {
+    marginBottom: "20px",
+    
+    display: "none",
+    "&:last-child": {
+        marginBottom: "0",
+    },
+  },
+  
+
 }));
 
 export default useStyles;

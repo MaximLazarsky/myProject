@@ -96,7 +96,11 @@ const updateProject = async (req, res) => {
         platform,
       },
       { new: true }
+      
     );
+    
+
+    
     return res.json({ project, message: "Project was updated" });
   } catch (e) {
     console.log(e);

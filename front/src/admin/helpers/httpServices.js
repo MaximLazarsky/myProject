@@ -110,6 +110,27 @@ export const fetchAddImg = async (formData) => {
   }
 }
 
+export const fetchAddMultipleImages = async (formData) => {
+  try {
+  const res = await axios.post("http://localhost:5000/api/file/files", 
+    formData,
+  {
+    headers: { Authorization: localStorage.getItem("Authorization") },
+  })
+  console.log("response", res)
+  return res;
+  
+} catch (err) {
+  if (err.response.status === 500) {
+    console.log('There was a problem with the server')
+  } else {
+    console.log(err.response.data.msg)
+  }
+}
+}
+
+
+
 export const fetchAddProject = async (clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
   const response = await axios.post("http://localhost:5000/api/projects", 
   {
@@ -142,10 +163,9 @@ export const fetchDeleteProject = async (projectId) => {
     return response;
 }
 
-export const fetchUpdateProject = async (projectId, clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
+export const fetchUpdateProject = async (projectId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, isActive, isSuccess) => {
   const response = await axios.put(`http://localhost:5000/api/projects/${projectId}`, 
   {
-    client: clientId,
     projectName: projectName,
     task: task,
     skills: skills,
@@ -158,7 +178,6 @@ export const fetchUpdateProject = async (projectId, clientId, projectName, task,
     isSuccess: isSuccess,
     earned: earned,
     platform: platform,
-    employee: employeeId,
   },
   {
     headers: { Authorization: localStorage.getItem("Authorization") },

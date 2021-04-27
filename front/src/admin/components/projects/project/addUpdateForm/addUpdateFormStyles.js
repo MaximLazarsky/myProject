@@ -54,6 +54,65 @@ projectsContainer: {
     width: "200px",
     margin: "15px auto 0 auto",
   },
+  lableAvatar: {
+    fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    fontWeight:"400",
+    color: "rgb(118, 118, 118)",
+    border: "solid 1px rgb(223, 223, 223)",
+    borderRadius: "4px",
+    padding: "10.5px 14px",
+    marginTop: "27px",
+    marginBottom: "30px",
+    "&:hover": {
+        border: "solid 1px rgb(59, 59, 59)",
+        cursor: "pointer",
+      },
+},
+addUpdateButton: {
+    padding: "10px 20px",
+    textTransform: "uppercase",
+    width: "300px",
+    margin: "0 auto"
+},
+uploadImgWrap: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+uploadButton: {
+    padding: "8px 14px",
+    marginLeft: "15px",
+},
+employeeAvatar: {
+    height: "70px",
+    width: "70px",
+    margin: "0 auto 20px"
+  },
+  uploaded: {
+    textAlign: "center"
+  },
+  uploadedImg: {
+      height: "90px",
+      width: "90px",
+      borderRadius: "50%",
+      border: "3px solid #3f51b5",
+      margin: "0 auto",
+      textAlign: "center"
+  },
+  toastContainer: {
+      height: "800px"
+  }
 }));
 
 export default useStyles;

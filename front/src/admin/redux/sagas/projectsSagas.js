@@ -1,6 +1,6 @@
 import { takeLatest, put} from "redux-saga/effects";
-import { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT} from "../types"
-import { fetchAddProject, fetchDeleteProject, fetchUpdateProject } from "../../helpers/httpServices"
+import { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT, ADD_MULTIPLE_IMAGES} from "../types"
+import { fetchAddProject, fetchDeleteProject, fetchUpdateProject, fetchAddMultipleImages } from "../../helpers/httpServices"
 import { togleIsLogin } from "../actions/loginAdmin";
 
 
@@ -24,11 +24,21 @@ function* deleteProject({payload}) {
 }
 
 function* updateProject({payload}) {
-	const {projectId, clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess} = payload
+	const {projectId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, isActive, isSuccess} = payload
 	console.log("payload in SAGA", payload)
 	try{
-		yield fetchUpdateProject(projectId, clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess);
+		yield fetchUpdateProject(projectId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, isActive, isSuccess);
 		yield put(togleIsLogin())		
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+function* addMultipleImages({payload}) {
+	const {formData} = payload
+	console.log("payload in SAGA", payload)
+	try{
+		yield fetchAddMultipleImages(formData);		
 	} catch (e) {
 		console.log(e)
 	}
@@ -37,5 +47,6 @@ function* updateProject({payload}) {
 export default [
 	takeLatest(ADD_PROJECT, addProject),
 	takeLatest(DELETE_PROJECT, deleteProject),
-	takeLatest(UPDATE_PROJECT, updateProject)
+	takeLatest(UPDATE_PROJECT, updateProject),
+	takeLatest(ADD_MULTIPLE_IMAGES, addMultipleImages),
   ];

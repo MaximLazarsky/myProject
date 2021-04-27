@@ -7,6 +7,7 @@ import SelectClient from './SelectClient'
 import SelectEmployee from './SelectEmployee'
 import TextField from '@material-ui/core/TextField'
 import Switch from './Switch'
+import ImagesUploadContainer from './imagesUpload/ImagesUploadContainer'
 
 export default function AddUpdateForm({clients, 
 	employees,
@@ -27,14 +28,19 @@ export default function AddUpdateForm({clients,
 	toggleCheckedIsSuccess,
 	onClickAddProject,
 	currentProject,
-	
+	onClickBackButton,
 }) {
 	const classes = useStyles()
 	
 	return (
 		<div className={`container ${classes.projectsContainer}`}>
 			<div className={classes.linkButtonPosition}>
-				<Button className={classes.linkButtonStyles} variant="contained" color="primary" size="small">
+				<Button className={classes.linkButtonStyles} 
+				variant="contained" 
+				color="primary" 
+				size="small"
+				onClick={onClickBackButton}
+				>
 					<Link className={classes.linkButton} to='admin/projects'>BACK TO LPROJECTS </Link>  
 				</Button>
 				<Typography variant="h4" color="primary" className={classes.title}>
@@ -46,11 +52,18 @@ export default function AddUpdateForm({clients,
 			<Paper className={classes.projectForm}>
 				<Typography variant="h6" color="primary" className={classes.secondTitle}> Add or update Projects </Typography>
 					<div className={classes.inputFormWrap}>
+
+
+						<ImagesUploadContainer />
+
+
+						{!!currentProject ? null : 
 						<SelectClient clientId={clientId}
 						inputLabel={"Client"}
 						clients={clients}
 						currentProject={currentProject}
 						/>
+						}
 						<InputForm {...projectName}
 						lable={"Project name"} 
 						defaultValue={currentProject.projectName}
@@ -93,12 +106,13 @@ export default function AddUpdateForm({clients,
 						lable={"Earned"} 
 						defaultValue={currentProject.earned} 
 						/>
+						{!!currentProject ? null : 
 						<SelectEmployee employeeId={employeeId}
 						inputLabel={"Employee"}
 						employees={employees}
 						currentProject={currentProject}
-						// handleChangeEmployeeId={handleChangeEmployeeId}
 						/>
+						}
 						<div className={classes.switch}>
 							<Switch label={"is Active"}
 							checked={isActive}

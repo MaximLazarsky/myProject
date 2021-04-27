@@ -1,8 +1,6 @@
-const Employees = require("../models/Employees-model");
-const File = require("../models/File-model")
 
 const addFile = (req, res) => {
-	console.log(req.body)
+	// console.log(req.body)
 	if(req.files === null) {
 		return res.status(400).json({msg: 'no file uploaded'})
 	}
@@ -15,4 +13,24 @@ const addFile = (req, res) => {
 	})
 }
 
-module.exports = {addFile}
+const addMultipleFiles = (req, res) => {
+	console.log("req.body", req.body)
+	if(req.files === null) {
+		return res.status(400).json({msg: 'no file uploaded'})
+	}
+	const file = req.files.file
+	console.log("ARREY file in file-controller", file)
+	file.map((file) => {file.mv(`C:/Users/Dimitr/Desktop/oursite/myProject/front/public/uploads/projectsImages/${file.name}`, err => {
+		if(err) {
+			return res.status(500).send(err)
+		}
+		// return res.json({ message: "images was added" });
+	})})
+	
+	 
+}
+
+module.exports = {
+	addFile,
+	addMultipleFiles,
+}
