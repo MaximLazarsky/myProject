@@ -66,15 +66,10 @@ const useStyles = makeStyles((theme) => ({
   },
   projectItemDetailsImages: {
     padding: "20px 10px",
+    height: "100px",
+    width: "100px",
   },
-  inputAddUpdateFormAvatar: {
-    marginBottom: "20px",
-    
-    display: "none",
-    "&:last-child": {
-        marginBottom: "0",
-    },
-  },
+  
   
 
 }));

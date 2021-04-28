@@ -131,7 +131,7 @@ export const fetchAddMultipleImages = async (formData) => {
 
 
 
-export const fetchAddProject = async (clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
+export const fetchAddProject = async (clientId, projectName, task, skills, discription, startDate, completionDate, imgs, projectLink, platform, earned, employeeId, isActive, isSuccess) => {
   const response = await axios.post("http://localhost:5000/api/projects", 
   {
     client: clientId,
@@ -141,7 +141,7 @@ export const fetchAddProject = async (clientId, projectName, task, skills, discr
     discription: discription,
     dateStartWorking: startDate,
     dateStopWorking: completionDate,
-    imgs: [],
+    imgs: imgs,
     linkProdaction: projectLink,
     isActive: isActive,
     isSuccess: isSuccess,

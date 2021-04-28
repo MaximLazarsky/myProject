@@ -48,15 +48,10 @@ export default function AddUpdateForm({clients,
 					Projects 
 				</Typography>
 			</div>
-
 			<Paper className={classes.projectForm}>
 				<Typography variant="h6" color="primary" className={classes.secondTitle}> Add or update Projects </Typography>
 					<div className={classes.inputFormWrap}>
-
-
 						<ImagesUploadContainer />
-
-
 						{!!currentProject ? null : 
 						<SelectClient clientId={clientId}
 						inputLabel={"Client"}

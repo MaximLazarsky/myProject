@@ -2,7 +2,10 @@ import {useState} from 'react'
 import AddUpdateForm from './AddUpdateForm'
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import {addNewProject, updateProject, setCurrentProject} from '../../../../redux/actions/projects'
+import {addNewProject,
+	 updateProject, 
+	 setCurrentProject, 
+	 setCurrentProjectImages} from '../../../../redux/actions/projects'
 import useInput from '../../../utils/hooks/useInput'
 
 export default function AddUpdateFormComtainer() {
@@ -11,6 +14,7 @@ export default function AddUpdateFormComtainer() {
 	const {clients} = useSelector((state)=>state.data.data)
 	const {employees} = useSelector((state)=>state.data.data)
 	const {currentProject} = useSelector((state)=>state)
+	const {currentProjectImajes} = useSelector((state)=>state)
 	const clientId = useInput(!!currentProject ? currentProject.client._id : '')
 	const projectName = useInput(!!currentProject ? currentProject.projectName : '')
 	const task = useInput(!!currentProject ? currentProject.task : '')
@@ -24,6 +28,8 @@ export default function AddUpdateFormComtainer() {
 	const employeeId = useInput(!!currentProject ? currentProject.employee : '')
 	const [isActive, setIsActive] = useState(!!currentProject ? currentProject.isActive : false)
 	const [isSuccess, setIsSuccess] = useState(!!currentProject ? currentProject.isSuccess : false)
+
+	console.log("currentProjectImajes", currentProjectImajes)
 
 	const toggleCheckedIsActive = () => setIsActive((isActive) => !isActive);
    	const toggleCheckedIsSuccess = () => setIsSuccess((isSuccess) => !isSuccess)
@@ -41,7 +47,7 @@ export default function AddUpdateFormComtainer() {
 				discription: discription.value,
 				startDate: startDate.value,
 				completionDate: completionDate.value,
-				imgs: [],
+				imgs: currentProjectImajes,
 				projectLink: projectLink.value,
 				isActive,
 				isSuccess,
@@ -58,7 +64,7 @@ export default function AddUpdateFormComtainer() {
 				discription: discription.value,
 				startDate: startDate.value,
 				completionDate: completionDate.value,
-				imgs: [],
+				imgs: currentProjectImajes,
 				projectLink: projectLink.value,
 				isActive,
 				isSuccess,
@@ -68,9 +74,13 @@ export default function AddUpdateFormComtainer() {
 			}))
 		}
         onClickButtonRedirect() 
+		dispatch(setCurrentProjectImages([]))
     }
 
-	const onClickBackButton = () => dispatch(setCurrentProject(""))
+	const onClickBackButton = () => {
+		dispatch(setCurrentProject(""))
+		dispatch(setCurrentProjectImages([]))
+	}
 	
 	return (
 		<AddUpdateForm clients={clients}

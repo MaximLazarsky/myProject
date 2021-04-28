@@ -112,7 +112,15 @@ employeeAvatar: {
   },
   toastContainer: {
       height: "800px"
-  }
+  },
+  inputAddUpdateFormImg: {
+    marginBottom: "20px",
+ 
+    display: "none",
+    "&:last-child": {
+        marginBottom: "0",
+    },
+  },
 }));
 
 export default useStyles;

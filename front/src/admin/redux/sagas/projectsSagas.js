@@ -5,9 +5,10 @@ import { togleIsLogin } from "../actions/loginAdmin";
 
 
 function* addProject({payload}) {
-	const {clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess} = payload
+	const {clientId, projectName, task, skills, discription, startDate, completionDate, imgs, projectLink, platform, earned, employeeId, isActive, isSuccess} = payload
+	console.log("payload in ADDPROJECT", payload)
 	try{
-		yield fetchAddProject(clientId, projectName, task, skills, discription, startDate, completionDate, projectLink, platform, earned, employeeId, isActive, isSuccess);
+		yield fetchAddProject(clientId, projectName, task, skills, discription, startDate, completionDate, imgs, projectLink, platform, earned, employeeId, isActive, isSuccess);
 		yield put(togleIsLogin())		
 	} catch (e) {
 		console.log(e)

@@ -5,27 +5,23 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import useStyles from '../addUpdateFormStyles';
 import { ToastContainer, toast } from 'react-toastify';
 
-
-export default function ImagesUpload({src,
+export default function ImagesUpload({file,
   onSubmit,
-  fileName,
   onChange,
-  onclickSetImg
+  onclickSetImg,
 }) {
   const classes = useStyles();
-
+  console.log("file.lenght", file.length)
   return ( 
-  <Fragment>
-    {/* {src ? <div className={classes.uploaded}> 
-      <img className={classes.uploadedImg} src={src}  alt="img"/>
-    </div> 
-    : <PersonOutlineIcon className={classes.uploadedImg} src={"https://via.placeholder.com/150"} alt="img"/>
-    } */}
+  <Fragment>    
   	<form onSubmit={onSubmit}>
       <div className={classes.uploadImgWrap}>
-        <label className={classes.lableAvatar} htmlFor="avatar">{fileName} </label>  
-        <input className={classes.inputAddUpdateFormAvatar}
-          id="avatar"
+        <label className={classes.lableAvatar} 
+        htmlFor="images">
+          {file.length ? `Number of uploaded photos ${file.length}` : "Upload project photos"} 
+        </label>  
+        <input className={classes.inputAddUpdateFormImg}
+          id="images"
           variant="outlined"
           type="file"
           required multiple
@@ -39,18 +35,18 @@ export default function ImagesUpload({src,
           value="upload"
           className={classes.uploadButton}
         >
-          Add avatar
+          {file.length === 1 ? 'Add project photo' : 'Add project photos'}
         </Button>
         <ToastContainer className={classes.toastContainer}
         position="top-center"
-autoClose={2000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover/>
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover/>
       </div>      
 	  </form>
 	</Fragment>

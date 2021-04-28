@@ -68,7 +68,7 @@ export default function ProjectDetails({project,
 				/>
 			</div>
 			<div className={classes.projectItemDetailsImagesWrap}>
-				{project.imgs.map((img, index) => <img className={classes.projectItemDetailsImages} src={img} alt="" key={index}/>)}
+				{!!project.imgs? project.imgs.map((img, index) => <img className={classes.projectItemDetailsImages} src={`/uploads/projectsImages/${img}`} alt="" key={index}/>) : null}
 			</div>	
 		</div>
 	)
