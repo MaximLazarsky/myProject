@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import useStyles from './addUpdateFormStyles'
 import {Typography, Button} from '@material-ui/core';
@@ -8,6 +9,9 @@ import SelectEmployee from './SelectEmployee'
 import TextField from '@material-ui/core/TextField'
 import Switch from './Switch'
 import ImagesUploadContainer from './imagesUpload/ImagesUploadContainer'
+import SelectMoney from './selectMoney/SelectMoney'
+import ConvertingMovey from './selectMoney/ConvertingMovey'
+import Date from './date/Date'
 
 export default function AddUpdateForm({clients, 
 	employees,
@@ -29,9 +33,12 @@ export default function AddUpdateForm({clients,
 	onClickAddProject,
 	currentProject,
 	onClickBackButton,
+	currencies,
+	handleChangeCurrency,
+	currency,
 }) {
 	const classes = useStyles()
-	
+		
 	return (
 		<div className={`container ${classes.projectsContainer}`}>
 			<div className={classes.linkButtonPosition}>
@@ -52,6 +59,7 @@ export default function AddUpdateForm({clients,
 				<Typography variant="h6" color="primary" className={classes.secondTitle}> Add or update Projects </Typography>
 					<div className={classes.inputFormWrap}>
 						<ImagesUploadContainer />
+						<ConvertingMovey />
 						{!!currentProject ? null : 
 						<SelectClient clientId={clientId}
 						inputLabel={"Client"}
@@ -80,8 +88,10 @@ export default function AddUpdateForm({clients,
 						rowsMax={4}
 						variant="outlined"
 						value={currentProject.discription} 
-       					/>						
+       					/>			
+						<Date />			
 						<InputForm {...startDate}
+						
 						lable={"Start date"} 
 						defaultValue={currentProject.dateStartWorking} 						
 						/>
@@ -97,10 +107,19 @@ export default function AddUpdateForm({clients,
 						lable={"Platform"} 
 						defaultValue={currentProject.platform} 
 						/>
-						<InputForm {...earned}
-						lable={"Earned"} 
-						defaultValue={currentProject.earned} 
-						/>
+						<div className={classes.earnedAndSelectMoney}>
+							
+							<InputForm {...earned}
+							className={classes.earned}
+							lable={"Earned"} 
+							defaultValue={currentProject.earned} 
+							/>
+							<SelectMoney currencies={currencies}
+							handleChangeCurrency={handleChangeCurrency}
+							currency={currency}
+							/>
+						</div>
+						
 						{!!currentProject ? null : 
 						<SelectEmployee employeeId={employeeId}
 						inputLabel={"Employee"}

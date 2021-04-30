@@ -121,6 +121,15 @@ employeeAvatar: {
         marginBottom: "0",
     },
   },
+  
+  earnedAndSelectMoney: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  earned: {
+    padding: "120px !important",
+
+  },
 }));
 
 export default useStyles;

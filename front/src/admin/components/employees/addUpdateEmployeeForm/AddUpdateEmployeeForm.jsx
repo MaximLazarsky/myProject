@@ -5,7 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import AvatarUploadContainer from '../employee/avatarUpload/AvatarUploadContainer'
-import DateEmployeeForm from './DateEmployeeForm'
+
 
 export default function AddUpdateEmployeeForm({buttonName,
     open, 
@@ -62,7 +62,7 @@ export default function AddUpdateEmployeeForm({buttonName,
                 lable={"Date Start Working"} 
                 defaultValue={employee ? employee.dateStartWorking : ''}
                 />
-                {/* <DateEmployeeForm /> */}
+            
                 
                 <InputForm {...info}
                 lable={"Info"} 

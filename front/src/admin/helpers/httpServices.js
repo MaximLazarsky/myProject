@@ -185,3 +185,10 @@ export const fetchUpdateProject = async (projectId, projectName, task, skills, d
   console.log("response in HTTPservices", response)
   return response;
 }
+
+export const fetchGetExchangeRates = async () => {
+	const response = await axios.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
+  console.log(response.data)
+	return response.data;
+
+  };

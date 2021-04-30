@@ -9,6 +9,23 @@ import {addNewProject,
 import useInput from '../../../utils/hooks/useInput'
 
 export default function AddUpdateFormComtainer() {
+	
+	const currencies = [
+		{
+		  value: 'USD',
+		  label: '$',
+		},
+		{
+		  value: 'EUR',
+		  label: '€',
+		},
+		{
+		  value: 'UAH',
+		  label: '₴',
+		},
+	  ]
+	  
+
 	const history = useHistory()
 	const dispatch = useDispatch()
 	const {clients} = useSelector((state)=>state.data.data)
@@ -25,18 +42,15 @@ export default function AddUpdateFormComtainer() {
 	const projectLink = useInput(!!currentProject ? currentProject.linkProdaction : '')
 	const platform = useInput(!!currentProject ? currentProject.platform : '')
 	const earned = useInput(!!currentProject ? currentProject.earned : '')
+	const [currency, setCurrency] = useState('$');
 	const employeeId = useInput(!!currentProject ? currentProject.employee : '')
 	const [isActive, setIsActive] = useState(!!currentProject ? currentProject.isActive : false)
 	const [isSuccess, setIsSuccess] = useState(!!currentProject ? currentProject.isSuccess : false)
-
-	console.log("currentProjectImajes", currentProjectImajes)
-
-	const toggleCheckedIsActive = () => setIsActive((isActive) => !isActive);
+	
+  	const handleChangeCurrency = (event) => setCurrency(event.target.value)
+  	const toggleCheckedIsActive = () => setIsActive((isActive) => !isActive);
    	const toggleCheckedIsSuccess = () => setIsSuccess((isSuccess) => !isSuccess)
 	const onClickButtonRedirect = () => history.push('/admin/projects')
-
-	console.log("clientId.value", clientId.value)
-
 	const onClickAddProject = () => {
 		if (!!currentProject) {
 			dispatch(updateProject({
@@ -51,7 +65,7 @@ export default function AddUpdateFormComtainer() {
 				projectLink: projectLink.value,
 				isActive,
 				isSuccess,
-				earned: earned.value,
+				earned: earned.value + currency,
 				platform: platform.value,
 			}))
 			dispatch(setCurrentProject(""))
@@ -68,7 +82,7 @@ export default function AddUpdateFormComtainer() {
 				projectLink: projectLink.value,
 				isActive,
 				isSuccess,
-				earned: earned.value,
+				earned: earned.value + currency,
 				platform: platform.value,
 				employeeId: employeeId.value,
 			}))
@@ -76,7 +90,6 @@ export default function AddUpdateFormComtainer() {
         onClickButtonRedirect() 
 		dispatch(setCurrentProjectImages([]))
     }
-
 	const onClickBackButton = () => {
 		dispatch(setCurrentProject(""))
 		dispatch(setCurrentProjectImages([]))
@@ -103,6 +116,9 @@ export default function AddUpdateFormComtainer() {
 		onClickAddProject={onClickAddProject}
 		currentProject={currentProject}
 		onClickBackButton={onClickBackButton}
+		currencies={currencies}
+		handleChangeCurrency={handleChangeCurrency}
+		currency={currency}
 		/>
 	)
 }

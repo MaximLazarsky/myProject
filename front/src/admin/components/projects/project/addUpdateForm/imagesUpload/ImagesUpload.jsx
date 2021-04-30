@@ -11,7 +11,6 @@ export default function ImagesUpload({file,
   onclickSetImg,
 }) {
   const classes = useStyles();
-  console.log("file.lenght", file.length)
   return ( 
   <Fragment>    
   	<form onSubmit={onSubmit}>
