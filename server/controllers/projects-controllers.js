@@ -5,6 +5,7 @@ const Employees = require("../models/Employees-model");
 
 const addProject = async (req, res) => {
   try {
+    
     const {
       client,
       projectName,
@@ -21,6 +22,7 @@ const addProject = async (req, res) => {
       platform,
       employee,
     } = req.body;
+    
     const project = await new Projects({
       client,
       projectName,
@@ -39,7 +41,7 @@ const addProject = async (req, res) => {
     });
 
     await project.save();
-
+    
     const targetClient = await Clients.findById({ _id: client });
     await targetClient.projects.push(project._id);
     await targetClient.save();
@@ -94,7 +96,11 @@ const updateProject = async (req, res) => {
         platform,
       },
       { new: true }
+      
     );
+    
+
+    
     return res.json({ project, message: "Project was updated" });
   } catch (e) {
     console.log(e);

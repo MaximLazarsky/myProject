@@ -8,7 +8,14 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     fontWeight: "500",
     marginBottom: "30px",
-  }
+  },
+  clientTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  linkButtonStyles: {
+    height: "40px",
+  },
 }));
 
 export default useStyles;

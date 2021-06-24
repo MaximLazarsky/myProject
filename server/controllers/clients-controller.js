@@ -66,10 +66,10 @@ const updateClient = async (req, res) => {
     const client = await Clients.findByIdAndUpdate(
       { _id: id },
       {
-        clientName: clientName || oldClientInfo,
+        clientName,
         clientSurname,
         clientEmail,
-        projects,
+        projects: projects || [],
       },
       { new: true }
     );

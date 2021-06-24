@@ -1,5 +1,6 @@
-import { takeLatest, put } from "redux-saga/effects";
-import { fetchLoginAdmin, fetchGetData } from "../../helpers/httpServices";
+import { takeLatest, put} from "redux-saga/effects";
+import { fetchLoginAdmin, fetchGetData, fetchGetExchangeRates } from "../../helpers/httpServices";
+
 import {
   LOGIN_ADMIN,
   SET_IS_LOGIN,
@@ -7,6 +8,7 @@ import {
   TOGLE_IS_LOADING,
 } from "../types";
 import { getData } from "../actions/loginAdmin";
+import { getExchangeRate } from "../actions/loginAdmin";
 
 const loginAdminSaga = function* ({ payload }) {
   const { adminEmail, password } = payload;
@@ -27,8 +29,10 @@ const loginAdminSaga = function* ({ payload }) {
 const getAdminData = function* () {
   try {
     yield put({ type: TOGLE_IS_LOADING });
-    const { data } = yield fetchGetData();
+    const { data } = yield (fetchGetData())
     yield put(getData(data));
+    const  exchangeRate  = yield fetchGetExchangeRates()
+    yield put(getExchangeRate(exchangeRate));
     yield put({ type: TOGLE_IS_LOADING });
   } catch (e) {
     console.log({ e });

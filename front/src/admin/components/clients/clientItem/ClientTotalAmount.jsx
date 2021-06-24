@@ -1,6 +1,6 @@
 import useStyles from './clientItemStyles';
 
-export default function ClientTotalAmountContainer({projects}) {
+export default function ClientTotalAmount({projects}) {
 	const classes = useStyles()
 	const earned = projects.map((project) => +project.earned.substring(0, project.earned.length - 1))
 	function add(accumulator, a) {
